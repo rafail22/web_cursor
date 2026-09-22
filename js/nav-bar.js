@@ -1,4 +1,4 @@
-// Universal floating navigation dock for switching between all 11 experiences + Hub
+// Universal floating navigation dock for switching between all experiences + Hub
 
 (function() {
   function initNav() {
@@ -6,7 +6,8 @@
     
     // Determine active page
     let activePage = 'hub';
-    if (currentPath.includes('terminal.html')) activePage = 'terminal';
+    if (currentPath.includes('ai-vision.html')) activePage = 'aivision';
+    else if (currentPath.includes('terminal.html')) activePage = 'terminal';
     else if (currentPath.includes('button-game.html')) activePage = 'button';
     else if (currentPath.includes('payday-survival.html')) activePage = 'payday';
     else if (currentPath.includes('cyberpunk-portfolio.html')) activePage = 'cyberpunk';
@@ -24,6 +25,7 @@
     
     const pages = [
       { id: 'hub', label: 'Menu Utama', icon: '🏠', url: 'index.html', theme: '' },
+      { id: 'aivision', label: 'AI Vision Gombal', icon: '👁️', url: 'ai-vision.html', theme: 'button-theme' },
       { id: 'button', label: 'Tombol Jahil', icon: '🎯', url: 'button-game.html', theme: 'button-theme' },
       { id: 'payday', label: 'Bertahan Gajian', icon: '💸', url: 'payday-survival.html', theme: 'payday-theme' },
       { id: 'password', label: 'Password Mustahil', icon: '📝', url: 'password-game.html', theme: 'button-theme' },

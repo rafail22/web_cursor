@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Vision // Teman Curhat &amp; Gombal Real-Time</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/ai-vision.css">
+</head>
+<body class="ai-vision-page">
+
+  <!-- Header -->
+  <header class="ai-header">
+    <div class="ai-badge">
+      <span class="ai-live-dot"></span>
+      <span>AI VISION NEURAL ENGINE // 100% DI BROWSER</span>
+    </div>
+    <h1 class="ai-title">TEMAN CURHAT &amp; GOMBAL</h1>
+    <p class="ai-desc">
+      Tatap kamera Anda! AI akan membaca ekspresi wajah secara instan: Senyum dihujani gombalan manis, Sedih langsung dihibur dengan perhatian!
+    </p>
+  </header>
+
+  <!-- Main AI Grid -->
+  <main class="ai-main-grid">
+
+    <!-- Left Column: Camera Viewport -->
+    <div class="vision-card">
+      <div class="camera-viewport-container">
+        <!-- Start Overlay Trigger -->
+        <div class="camera-start-overlay" id="startOverlay">
+          <div class="camera-start-icon">👁️</div>
+          <h2>Izinkan Akses Webcam</h2>
+          <p style="color: #94a3b8; font-size: 13px; max-width: 320px;">
+            Video diproses 100% lokal di perangkat Anda secara aman dan tidak dikirim ke server mana pun.
+          </p>
+          <button class="btn-start-camera" id="btnStartCamera">
+            AKTIFKAN KAMERA AI 🚀
+          </button>
+        </div>
+
+        <!-- Video & Canvas Overlay -->
+        <video id="webcamVideo" autoplay playsinline muted></video>
+        <canvas id="visionCanvas"></canvas>
+      </div>
+
+      <!-- Action Toolbar -->
+      <div class="camera-toolbar">
+        <button class="btn-action-tool active-tool" id="btnToggleVoice" title="Nyalakan/Matikan Suara AI">
+          🔊 Suara AI: ON
+        </button>
+        <button class="btn-action-tool" id="btnSwitchCam" title="Ganti Kamera Depan / Belakang">
+          🔄 Ganti Kamera
+        </button>
+        <button class="btn-action-tool" id="btnSnapshot" title="Jepret Foto dengan Quote AI">
+          📸 Jepret Foto
+        </button>
+      </div>
+
+      <!-- Manual Mood Test Pills -->
+      <div style="margin-top: 4px;">
+        <div style="font-size: 11px; color: #64748b; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">
+          Uji Coba Ekspresi Manual:
+        </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button class="btn-action-tool mood-pill-trigger" data-mood="happy" style="padding: 6px 12px; font-size: 12px;">😊 Senyum</button>
+          <button class="btn-action-tool mood-pill-trigger" data-mood="sad" style="padding: 6px 12px; font-size: 12px;">🥺 Sedih</button>
+          <button class="btn-action-tool mood-pill-trigger" data-mood="surprised" style="padding: 6px 12px; font-size: 12px;">😲 Kaget</button>
+          <button class="btn-action-tool mood-pill-trigger" data-mood="angry" style="padding: 6px 12px; font-size: 12px;">😡 Marah</button>
+          <button class="btn-action-tool mood-pill-trigger" data-mood="wink" style="padding: 6px 12px; font-size: 12px;">😉 Kedip</button>
+          <button class="btn-action-tool mood-pill-trigger" data-mood="neutral" style="padding: 6px 12px; font-size: 12px;">😐 Datar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: AI Reaction & Dialogue Panel -->
+    <div class="dialogue-card">
+      <!-- AI Persona Avatar -->
+      <div class="ai-persona-header">
+        <div class="ai-avatar-circle">🤖</div>
+        <div class="ai-persona-info">
+          <h3>AI NOVA</h3>
+          <span class="ai-status-pill">
+            <span class="ai-live-dot" style="width: 6px; height: 6px; background:#10b981; box-shadow:0 0 6px #10b981;"></span>
+            <span>Menganalisis Bahasa Tubuh...</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Live Speech Bubble -->
+      <div class="ai-speech-bubble-container">
+        <div class="ai-speech-bubble">
+          <div class="detected-expression-badge" id="detectedBadge">😐 MUKA DATAR / TENANG</div>
+          <div class="ai-quote-text" id="aiQuoteText">
+            "Halo kawan! Silakan aktifkan kamera di sebelah kiri agar aku bisa melihat senyuman manismu hari ini! ✨"
+          </div>
+        </div>
+      </div>
+
+      <!-- Real-Time Metrics & Smile Meter -->
+      <div class="meters-panel">
+        <div class="meter-row">
+          <div class="meter-row-header">
+            <span>Indikator Senyuman:</span>
+            <span id="smilePercent" style="color: var(--ai-magenta);">0%</span>
+          </div>
+          <div class="meter-row-track">
+            <div class="meter-row-fill smile-fill" id="smileFill"></div>
+          </div>
+        </div>
+
+        <div class="meter-row">
+          <div class="meter-row-header">
+            <span>Kenyamanan Jiwa:</span>
+            <span id="comfortPercent" style="color: var(--ai-cyan);">50%</span>
+          </div>
+          <div class="meter-row-track">
+            <div class="meter-row-fill comfort-fill" id="comfortFill" style="width: 50%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Snapshot Download Toast -->
+  <div class="snapshot-toast" id="snapshotToast">
+    📸 Foto kenangan berhasil diunduh ke galeri!
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio-fx.js"></script>
+  <script src="js/nav-bar.js"></script>
+  <script src="js/ai-vision.js"></script>
+</body>
+</html>

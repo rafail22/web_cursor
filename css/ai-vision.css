@@ -1,0 +1,390 @@
+/* AI Vision - Teman Curhat & Gombal Styling */
+
+:root {
+  --ai-bg: #07080f;
+  --ai-surface: rgba(18, 22, 36, 0.85);
+  --ai-border: rgba(255, 255, 255, 0.12);
+  --ai-cyan: #00f0ff;
+  --ai-magenta: #ff007f;
+  --ai-purple: #b026ff;
+  --ai-green: #10b981;
+  --ai-amber: #f59e0b;
+}
+
+body.ai-vision-page {
+  background-color: var(--ai-bg);
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(255, 0, 127, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(0, 240, 255, 0.1) 0%, transparent 50%);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 24px 20px 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  user-select: none;
+}
+
+/* Header */
+.ai-header {
+  text-align: center;
+  max-width: 680px;
+  margin-bottom: 20px;
+}
+
+.ai-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  color: var(--ai-cyan);
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.ai-live-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--ai-magenta);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--ai-magenta);
+  animation: pulseDot 1.2s infinite;
+}
+
+@keyframes pulseDot {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.6; }
+}
+
+.ai-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(26px, 4vw, 42px);
+  font-weight: 900;
+  background: linear-gradient(135deg, #fff 40%, var(--ai-cyan) 80%, var(--ai-magenta) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 6px;
+}
+
+.ai-desc {
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+/* Main Interactive Layout Grid */
+.ai-main-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 24px;
+  max-width: 1060px;
+  width: 100%;
+}
+
+/* Camera & Vision Viewport */
+.vision-card {
+  background: var(--ai-surface);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--ai-border);
+  border-radius: 28px;
+  padding: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.camera-viewport-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #0d101a;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#webcamVideo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1); /* Mirror view for natural webcam feel */
+}
+
+#visionCanvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Camera Placeholder / Start Button */
+.camera-start-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(13, 16, 26, 0.95);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  z-index: 20;
+  padding: 24px;
+  text-align: center;
+}
+
+.camera-start-icon {
+  font-size: 56px;
+  animation: floatIcon 2s infinite ease-in-out;
+}
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.btn-start-camera {
+  background: linear-gradient(135deg, var(--ai-cyan), var(--ai-magenta));
+  color: #000;
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+  padding: 16px 32px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.5);
+  transition: all 0.2s ease;
+}
+
+.btn-start-camera:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 35px rgba(255, 0, 127, 0.6);
+}
+
+/* Camera Action Buttons Row */
+.camera-toolbar {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.btn-action-tool {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--ai-border);
+  color: #cbd5e1;
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 12px 14px;
+  border-radius: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-action-tool:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-color: var(--ai-cyan);
+}
+
+.btn-action-tool.active-tool {
+  background: var(--ai-cyan);
+  color: #000;
+  border-color: var(--ai-cyan);
+}
+
+/* Side Reaction & Dialogue Panel */
+.dialogue-card {
+  background: var(--ai-surface);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--ai-border);
+  border-radius: 28px;
+  padding: 26px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* AI Persona Avatar Header */
+.ai-persona-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ai-border);
+}
+
+.ai-avatar-circle {
+  width: 54px;
+  height: 54px;
+  background: linear-gradient(135deg, var(--ai-magenta), var(--ai-purple));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  box-shadow: 0 0 20px rgba(255, 0, 127, 0.5);
+}
+
+.ai-persona-info h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.ai-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--ai-cyan);
+}
+
+/* Dynamic Speech Bubble */
+.ai-speech-bubble-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.ai-speech-bubble {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 0, 127, 0.4);
+  border-radius: 20px;
+  border-bottom-left-radius: 4px;
+  padding: 22px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 0, 127, 0.15);
+  transition: all 0.3s ease;
+}
+
+.detected-expression-badge {
+  display: inline-block;
+  background: var(--ai-magenta);
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.ai-quote-text {
+  font-size: 17px;
+  line-height: 1.55;
+  font-weight: 600;
+  color: #f1f5f9;
+  min-height: 60px;
+}
+
+/* Emotion & Smile Meter Gauges */
+.meters-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--ai-border);
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.meter-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.meter-row-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 700;
+  color: #94a3b8;
+}
+
+.meter-row-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.meter-row-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.2s ease;
+}
+
+.meter-row-fill.smile-fill {
+  width: 0%;
+  background: linear-gradient(90deg, #f59e0b, #ff007f);
+  box-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
+}
+
+.meter-row-fill.comfort-fill {
+  width: 0%;
+  background: linear-gradient(90deg, #00f0ff, #10b981);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
+
+/* Snapshot Flash Notification */
+.snapshot-toast {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50px);
+  background: rgba(16, 185, 129, 0.95);
+  backdrop-filter: blur(14px);
+  color: #000;
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 900;
+  padding: 12px 24px;
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.snapshot-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 860px) {
+  .ai-main-grid {
+    grid-template-columns: 1fr;
+  }
+}
