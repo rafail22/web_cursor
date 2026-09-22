@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RETRO-OS v3.11 // Terminal CLI</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/terminal.css">
+</head>
+<body class="terminal-page">
+
+  <!-- CRT Monitor Container -->
+  <div class="crt-container flicker" id="crtContainer">
+    <div class="crt-scanlines"></div>
+    <div class="crt-vignette"></div>
+
+    <!-- Top OS Menu Bar -->
+    <header class="os-topbar">
+      <div class="topbar-left">
+        <div class="os-brand">
+          <span class="pixel-badge">OS</span>
+          <span>RETRO-OS 3.11</span>
+        </div>
+        <span id="osClock">WAKTU: 00:00:00</span>
+      </div>
+
+      <div class="topbar-center">
+        <span id="osBattery">BATERAI: [████████] 98%</span>
+        <span>RAM: 640KB / 1024KB</span>
+      </div>
+
+      <div class="topbar-right">
+        <button class="topbar-btn" id="themeToggleBtn" title="Ganti Palet Warna Layar">[WARNA: HIJAU]</button>
+        <button class="topbar-btn" id="scanToggleBtn" title="Aktifkan / Matikan Scanlines">[SCANLINES]</button>
+      </div>
+    </header>
+
+    <!-- Main Terminal CLI Screen -->
+    <main class="terminal-main" id="terminalMain">
+      <div class="terminal-history" id="terminalHistory">
+        <!-- Lines inserted dynamically -->
+      </div>
+
+      <!-- Active Input Row -->
+      <div class="terminal-input-row">
+        <span class="prompt-symbol">tamu@cybernet:~$</span>
+        <div class="terminal-input-wrapper">
+          <input 
+            type="text" 
+            id="terminalInput" 
+            class="terminal-input" 
+            spellcheck="false" 
+            autocomplete="off" 
+            autofocus 
+          />
+          <span class="terminal-cursor" id="terminalCursor"></span>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Fullscreen Matrix Rain Canvas -->
+  <canvas id="matrixCanvas"></canvas>
+  <div class="matrix-exit-hint" id="matrixExitHint">[TEKAN ESC ATAU KLIK LAYAR UNTUK KELUAR]</div>
+
+  <!-- Scripts -->
+  <script src="js/audio-fx.js"></script>
+  <script src="js/nav-bar.js"></script>
+  <script src="js/terminal.js"></script>
+</body>
+</html>

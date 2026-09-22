@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tombol yang Mustahil Diklik // Game Jahil</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/button-game.css">
+</head>
+<body class="button-game-page">
+  <div class="game-grid-bg"></div>
+
+  <!-- Header -->
+  <header class="game-header">
+    <h1 class="game-title">
+      <span>TOMBOL YANG MUSTAHIL DIKLIK</span>
+    </h1>
+    <p class="game-subtitle">Uji kesabaran manusia dan kecepatan refleks tingkat dewa</p>
+  </header>
+
+  <!-- Top Right HUD -->
+  <aside class="game-hud">
+    <div class="hud-card">
+      <div class="hud-label">Total Meleset</div>
+      <div class="hud-val" id="missCount">0</div>
+    </div>
+
+    <div class="hud-card" style="min-width: 180px;">
+      <div class="hud-label">Level Emosi User</div>
+      <div class="rage-bar-wrapper">
+        <div class="rage-bar-fill" id="rageBar"></div>
+      </div>
+      <div class="rage-text" id="rageText">Santai 😌 (0%)</div>
+    </div>
+  </aside>
+
+  <!-- Play Arena with Dynamic CTA Button -->
+  <main class="play-arena" id="playArena">
+    <div class="troll-btn-wrapper" id="trollWrapper">
+      <button class="troll-btn" id="trollBtn">
+        💰 KLAIM HADIAH Rp 1.000.000.000 💰
+      </button>
+    </div>
+  </main>
+
+  <!-- Secret Victory Modal -->
+  <div class="victory-modal-overlay" id="victoryModal">
+    <div class="victory-card">
+      <h2>🏆 MISI MUSTAHIL TERPECAHKAN!</h2>
+      <p id="victoryStats">Gila! Lu berhasil ngalahin matriks penghindar!</p>
+      <button class="btn-restart" id="restartBtn">Main Lagi</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio-fx.js"></script>
+  <script src="js/nav-bar.js"></script>
+  <script src="js/button-game.js"></script>
+</body>
+</html>

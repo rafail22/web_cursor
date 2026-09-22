@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulator Batalin Langganan // The Cancel Nightmare</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/unsubscribe-game.css">
+</head>
+<body class="unsub-game-page">
+
+  <!-- Header -->
+  <header class="unsub-header">
+    <div class="unsub-badge">🏢 SIMULATOR BIROKRASI DIGITAL</div>
+    <h1 class="unsub-title">BATALIN LANGGANAN</h1>
+    <p class="unsub-desc">Misi Anda sederhana: Batalkan langganan Rp 49.000/bulan ini sebelum Anda tua.</p>
+  </header>
+
+  <!-- Portal Container -->
+  <main class="portal-card">
+    <!-- Plan Summary Box -->
+    <div class="plan-summary-box">
+      <div class="plan-info">
+        <h3>STREAMFLIX VIP ULTIMATE</h3>
+        <p>Paket Langganan Premium Otomatis</p>
+      </div>
+      <div class="plan-price">Rp 49.000/bln</div>
+    </div>
+
+    <!-- Step 1: Diskon & Tombol Kamuflase -->
+    <div class="unsub-step active" id="step1">
+      <h2 class="step-heading">Jangan Pergi Dulu!</h2>
+      <p class="step-text">
+        Kami sangat menghargai Anda. Khusus hari ini, nikmati diskon eksklusif <b>Rp 250</b> untuk perpanjangan bulan berikutnya!
+      </p>
+      <button class="btn-keep-sub" id="btnStay1">
+        TETAP BERLANGGANAN (HEMAT RP 250!) 🎁
+      </button>
+      <button class="btn-hidden-cancel" id="btnCancel1">
+        Lanjut membatalkan...
+      </button>
+    </div>
+
+    <!-- Step 2: Checkbox Logika Terbalik -->
+    <div class="unsub-step" id="step2">
+      <h2 class="step-heading">Konfirmasi Alasan Pembatalan</h2>
+      <p class="step-text">
+        Harap centang persetujuan berikut dengan teliti untuk memproses permohonan Anda:
+      </p>
+      <div class="reverse-checkbox-list">
+        <label class="reverse-label">
+          <input type="checkbox" id="cb1">
+          <span>Centang jika Anda <b>TIDAK ingin TIDAK membatalkan</b> langganan ini.</span>
+        </label>
+        <label class="reverse-label">
+          <input type="checkbox" id="cb2">
+          <span>Centang jika Anda <b>SETUJU untuk TIDAK melanjutkan</b> penolakan pembatalan.</span>
+        </label>
+        <label class="reverse-label">
+          <input type="checkbox" id="cb3">
+          <span>Centang jika Anda <b>INGIN tetap berlangganan</b> seumur hidup.</span>
+        </label>
+      </div>
+      <button class="btn-keep-sub" id="btnConfirmStep2">
+        KIRIM KONFIRMASI ALASAN ➔
+      </button>
+    </div>
+
+    <!-- Step 3: Guilt Trip Kucing Menangis -->
+    <div class="unsub-step" id="step3">
+      <div class="cat-guilt-wrapper">
+        <div class="cat-emoji-visual">😿</div>
+        <p class="cat-quote">"Apakah kamu tega membuat maskot kucing kami menangis kelaparan di jalanan?"</p>
+      </div>
+      <h2 class="step-heading" style="text-align:center;">Pikirkan Kembali!</h2>
+      <p class="step-text" style="text-align:center;">
+        Jika Anda berhenti, 1 maskot kucing kantor kami akan kehilangan jatah pakan salmon mingguannya.
+      </p>
+      <button class="btn-keep-sub" id="btnGuiltStay">
+        SAYA PUNYA HATI, BATALKAN NIAT BERHENTI ❤️
+      </button>
+      <button class="btn-hidden-cancel" id="btnColdHeart" style="color: #ef4444;">
+        Saya berhati dingin, tetap lanjutkan pembatalan 💀
+      </button>
+    </div>
+
+    <!-- Step 4: Customer Service Bot Ping-Pong -->
+    <div class="unsub-step" id="step4">
+      <h2 class="step-heading">Antrean Layanan Pelanggan</h2>
+      <div class="cs-chat-box">
+        <div class="cs-bubble">
+          <b>CS Bot:</b> Halo! Permintaan pembatalan Anda telah kami terima ke dalam sistem.
+        </div>
+        <div class="cs-bubble">
+          <b>CS Bot:</b> Saat ini Anda berada di nomor antrean ke-<span class="cs-queue-counter">1.428</span>. Estimasi waktu verifikasi: <b>42 hari kerja</b>.
+        </div>
+      </div>
+      <button class="btn-final-kill" id="btnFinalKill">
+        KONFIRMASI AKHIR PEMBATALAN SEKARANG
+      </button>
+    </div>
+  </main>
+
+  <!-- Victory Modal -->
+  <div class="unsub-modal-overlay" id="unsubModal">
+    <div class="unsub-modal-card">
+      <h2>🎉 SELAMAT! ANDA MERDEKA!</h2>
+      <p>
+        Hebat sekali! Anda adalah <b>0.001%</b> manusia di bumi yang berhasil mengalahkan trik birokrasi manipulatif dan sukses membatalkan langganan digital!
+      </p>
+      <button class="btn-unsub-retry" id="btnUnsubRetry">Langganan Lagi Aja 😈</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio-fx.js"></script>
+  <script src="js/nav-bar.js"></script>
+  <script src="js/unsubscribe-game.js"></script>
+</body>
+</html>

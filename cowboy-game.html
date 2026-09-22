@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uji Refleks Koboi Cabut Pistol // The False Alarm Trap</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/cowboy-game.css">
+</head>
+<body class="cowboy-game-page">
+
+  <!-- Header -->
+  <header class="cowboy-header">
+    <div class="cowboy-badge">🌵 DUEL KILAT WILD WEST</div>
+    <h1 class="cowboy-title">UJI REFLEKS KOBOI</h1>
+    <p class="cowboy-desc">Awas jebakan aba-aba palsu! Tembak <b>HANYA</b> saat layar berubah hijau!</p>
+  </header>
+
+  <!-- HUD -->
+  <aside class="cowboy-hud">
+    <div class="cowboy-lives" id="cowboyLives">❤️❤️❤️</div>
+    <div class="cowboy-round-badge" id="roundBadge">RONDE 1 / 3: Bandit Amatir</div>
+  </aside>
+
+  <!-- Duel Arena Stage -->
+  <main class="duel-arena" id="duelArena">
+    <!-- Desert Sun & Ground Decor -->
+    <div class="duel-sun"></div>
+    <div class="duel-ground"></div>
+
+    <!-- Center Signal Indicator Box -->
+    <div class="signal-box">
+      <div class="signal-text" id="signalText">BERSIAP-SIAP...</div>
+      <div class="signal-subtext" id="signalSubtext">Tunggu sinyal HIJAU 'TEMBAK SEKARANG!'</div>
+    </div>
+
+    <!-- Gunslingers Row -->
+    <div class="gunslingers-row">
+      <!-- Player Cowboy -->
+      <div class="cowboy-sprite" id="playerSprite">
+        <div class="cowboy-avatar">🤠</div>
+        <span class="cowboy-name">Anda (Penantang)</span>
+      </div>
+
+      <!-- Bot Cowboy Opponent -->
+      <div class="cowboy-sprite" id="botSprite">
+        <div class="cowboy-avatar">🦹</div>
+        <span class="cowboy-name" id="botName">Bandit Amatir</span>
+      </div>
+    </div>
+  </main>
+
+  <div class="duel-click-hint">
+    👉 KLIK PADA ARENA UNTUK MENEMBAK
+  </div>
+
+  <!-- Result Modal -->
+  <div class="cowboy-modal-overlay" id="cowboyModal">
+    <div class="cowboy-modal-card" id="cowboyModalCard">
+      <h2 id="cowboyModalTitle">HASIL DUEL</h2>
+      <p id="cowboyModalDesc">Keterangan hasil duel...</p>
+      <button class="btn-cowboy-retry" id="btnCowboyRetry">Coba Duel Lagi</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio-fx.js"></script>
+  <script src="js/nav-bar.js"></script>
+  <script src="js/cowboy-game.js"></script>
+</body>
+</html>

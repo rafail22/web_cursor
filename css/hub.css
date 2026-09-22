@@ -1,0 +1,289 @@
+/* Master Showcase Hub Styling */
+
+:root {
+  --hub-bg: #08090e;
+  --hub-surface: rgba(18, 20, 30, 0.75);
+  --hub-border: rgba(255, 255, 255, 0.1);
+}
+
+body.hub-page {
+  background-color: var(--hub-bg);
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(57, 255, 20, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(176, 38, 255, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(0, 240, 255, 0.06) 0%, transparent 50%);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Master Hub Header */
+.hub-header {
+  text-align: center;
+  padding: 70px 24px 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hub-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--hub-border);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #a0aec0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.hub-badge-dot {
+  width: 8px;
+  height: 8px;
+  background: #00f0ff;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #00f0ff;
+}
+
+.hub-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(38px, 5vw, 64px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  margin-bottom: 18px;
+  background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hub-title span.glow {
+  background: linear-gradient(135deg, #00f0ff, #b026ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hub-desc {
+  font-size: 18px;
+  color: #94a3b8;
+  line-height: 1.6;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Showcase Grid of 8 Experiences */
+.showcase-grid-section {
+  max-width: 1240px;
+  margin: 20px auto 120px;
+  padding: 0 24px;
+}
+
+.hub-category-header {
+  margin: 40px 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hub-category-header h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+.hub-category-header::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--hub-border);
+}
+
+.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-bottom: 50px;
+}
+
+.showcase-card {
+  background: var(--hub-surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--hub-border);
+  border-radius: 24px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.showcase-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* Color themed borders on hover */
+.showcase-card.card-terminal:hover {
+  border-color: rgba(57, 255, 20, 0.6);
+  box-shadow: 0 20px 50px rgba(57, 255, 20, 0.15);
+}
+.showcase-card.card-button:hover {
+  border-color: rgba(176, 38, 255, 0.6);
+  box-shadow: 0 20px 50px rgba(176, 38, 255, 0.2);
+}
+.showcase-card.card-payday:hover {
+  border-color: rgba(16, 185, 129, 0.6);
+  box-shadow: 0 20px 50px rgba(16, 185, 129, 0.2);
+}
+.showcase-card.card-cyberpunk:hover {
+  border-color: rgba(204, 255, 0, 0.6);
+  box-shadow: 0 20px 50px rgba(204, 255, 0, 0.2);
+}
+
+.card-top-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.card-tag {
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 1px;
+}
+
+.card-terminal .card-tag {
+  background: rgba(57, 255, 20, 0.12);
+  color: #39ff14;
+  border: 1px solid rgba(57, 255, 20, 0.3);
+}
+.card-button .card-tag {
+  background: rgba(176, 38, 255, 0.15);
+  color: #d884ff;
+  border: 1px solid rgba(176, 38, 255, 0.3);
+}
+.card-payday .card-tag {
+  background: rgba(16, 185, 129, 0.12);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+.card-cyberpunk .card-tag {
+  background: rgba(204, 255, 0, 0.12);
+  color: #ccff00;
+  border: 1px solid rgba(204, 255, 0, 0.3);
+}
+
+.card-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #4a5568;
+}
+
+.card-heading {
+  font-family: 'Syne', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.card-paragraph {
+  font-size: 15px;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.card-feature-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.feature-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+.card-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 24px;
+  border-radius: 14px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.card-terminal .card-cta-btn {
+  background: #39ff14;
+  color: #000;
+}
+.card-terminal .card-cta-btn:hover {
+  background: #fff;
+  box-shadow: 0 0 25px rgba(57, 255, 20, 0.6);
+}
+
+.card-button .card-cta-btn {
+  background: linear-gradient(135deg, #b026ff, #00f0ff);
+  color: #fff;
+}
+.card-button .card-cta-btn:hover {
+  box-shadow: 0 0 25px rgba(176, 38, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+.card-payday .card-cta-btn {
+  background: #10b981;
+  color: #000;
+}
+.card-payday .card-cta-btn:hover {
+  background: #34d399;
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.6);
+}
+
+.card-cyberpunk .card-cta-btn {
+  background: #ccff00;
+  color: #000;
+}
+.card-cyberpunk .card-cta-btn:hover {
+  background: #fff;
+  box-shadow: 0 0 25px rgba(204, 255, 0, 0.6);
+}
+
+@media (max-width: 900px) {
+  .hub-grid {
+    grid-template-columns: 1fr;
+  }
+}

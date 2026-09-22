@@ -1,0 +1,263 @@
+/* Uji Refleks Koboi Cabut Pistol Styling */
+
+:root {
+  --cowboy-sand: #181310;
+  --cowboy-surface: rgba(28, 22, 18, 0.9);
+  --cowboy-border: rgba(245, 158, 11, 0.25);
+  --cowboy-amber: #f59e0b;
+  --cowboy-red: #ef4444;
+  --cowboy-green: #10b981;
+}
+
+body.cowboy-game-page {
+  background-color: var(--cowboy-sand);
+  background-image: 
+    radial-gradient(circle at 50% 20%, rgba(245, 158, 11, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 50% 90%, rgba(239, 68, 68, 0.08) 0%, transparent 60%);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 24px 20px 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+  overflow-x: hidden;
+}
+
+/* Header */
+.cowboy-header {
+  text-align: center;
+  max-width: 650px;
+  margin-bottom: 20px;
+}
+
+.cowboy-badge {
+  display: inline-block;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: var(--cowboy-amber);
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.cowboy-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(26px, 4vw, 42px);
+  font-weight: 900;
+  background: linear-gradient(135deg, #fff, var(--cowboy-amber));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 6px;
+}
+
+.cowboy-desc {
+  font-size: 14px;
+  color: #a8a29e;
+}
+
+/* HUD (Lives & Round) */
+.cowboy-hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 640px;
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.cowboy-lives {
+  font-size: 24px;
+  letter-spacing: 2px;
+}
+
+.cowboy-round-badge {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--cowboy-border);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--cowboy-amber);
+}
+
+/* Duel Stage Arena */
+.duel-arena {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  height: 380px;
+  background: #120e0b;
+  border: 2px solid var(--cowboy-border);
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.1s ease;
+}
+
+.duel-arena.fire-now {
+  background-color: #064e3b;
+  border-color: var(--cowboy-green);
+  box-shadow: 0 0 60px rgba(16, 185, 129, 0.6);
+}
+
+.duel-arena.shock-red {
+  background-color: #7f1d1d;
+  border-color: var(--cowboy-red);
+}
+
+/* Stage Atmosphere */
+.duel-sun {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, var(--cowboy-amber) 30%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.duel-ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: #1c140e;
+  border-top: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+/* Gunslingers Row */
+.gunslingers-row {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 100%;
+  z-index: 5;
+  padding-bottom: 20px;
+}
+
+.cowboy-sprite {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s ease;
+}
+
+.cowboy-avatar {
+  font-size: 64px;
+  filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.5));
+}
+
+.cowboy-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: #cbd5e1;
+}
+
+/* Center Signal Indicator Box */
+.signal-box {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.signal-text {
+  font-family: 'Syne', sans-serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 1px;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+}
+
+.signal-subtext {
+  font-size: 13px;
+  color: #a8a29e;
+  margin-top: 6px;
+}
+
+/* Click Arena Trigger CTA */
+.duel-click-hint {
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--cowboy-amber);
+  text-align: center;
+}
+
+/* Result Modal */
+.cowboy-modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(14px);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.cowboy-modal-card {
+  background: #181310;
+  border: 2px solid var(--cowboy-amber);
+  border-radius: 28px;
+  padding: 40px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 0 60px rgba(245, 158, 11, 0.3);
+  animation: popIn 0.35s ease;
+}
+
+.cowboy-modal-card.defeat {
+  border-color: var(--cowboy-red);
+  box-shadow: 0 0 60px rgba(239, 68, 68, 0.4);
+}
+
+.cowboy-modal-card h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+
+.cowboy-modal-card p {
+  color: #a8a29e;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.btn-cowboy-retry {
+  background: linear-gradient(135deg, var(--cowboy-amber), #ea580c);
+  color: #000;
+  font-family: 'Syne', sans-serif;
+  font-weight: 900;
+  padding: 15px 36px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+}

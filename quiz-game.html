@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kuis Jebakan Batman // The Impossible Quiz Indo</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/quiz-game.css">
+</head>
+<body class="quiz-game-page">
+
+  <!-- Header -->
+  <header class="quiz-header">
+    <h1 class="quiz-title">KUIS JEBAKAN BATMAN</h1>
+    <p class="quiz-desc">Kuis receh dengan logika di luar nalar. Jawab dengan hati-hati!</p>
+  </header>
+
+  <!-- HUD (Lives & Timer) -->
+  <div class="quiz-hud">
+    <div class="lives-container" id="livesDisplay">❤️❤️❤️</div>
+    <div class="quiz-timer-pill">
+      <span>⏳ WAKTU:</span>
+      <span id="timerText">10s</span>
+    </div>
+  </div>
+
+  <!-- Timer Bar -->
+  <div class="timer-bar-track">
+    <div class="timer-bar-fill" id="timerBar"></div>
+  </div>
+
+  <!-- Question Stage Card -->
+  <main class="quiz-card">
+    <div class="question-num-tag" id="qNumTag">SOAL 1 DARI 8</div>
+    <div class="question-text" id="questionText">Memuat pertanyaan...</div>
+    <div class="choices-grid" id="choicesContainer">
+      <!-- Dynamic choice buttons inserted here -->
+    </div>
+  </main>
+
+  <!-- Game Over / Victory Modal -->
+  <div class="quiz-modal-overlay" id="quizModal">
+    <div class="quiz-modal-card" id="quizModalCard">
+      <h2 id="quizModalTitle">GAME OVER</h2>
+      <p id="quizModalDesc">Nyawa Anda telah habis.</p>
+      <button class="btn-quiz-retry" id="btnQuizRetry">Coba Lagi Dari Awal</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio-fx.js"></script>
+  <script src="js/nav-bar.js"></script>
+  <script src="js/quiz-game.js"></script>
+</body>
+</html>

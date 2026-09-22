@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flappy Kursor: Fisika Terbalik // Flappy Rage Edition</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/flappy-game.css">
+</head>
+<body class="flappy-game-page">
+
+  <!-- Header -->
+  <header class="flappy-header">
+    <h1 class="flappy-title">FLAPPY KURSOR: FISIKA TERBALIK</h1>
+    <p class="flappy-desc">Karakter melayang ke <b>ATAS</b> secara alami. Klik atau Spasi untuk menukik ke <b>BAWAH</b>!</p>
+  </header>
+
+  <!-- Stage Container -->
+  <main class="flappy-stage-wrapper">
+    <!-- In-game HUD overlay -->
+    <div class="flappy-hud-overlay">
+      <div class="flappy-score-badge" id="flappyScore">0</div>
+    </div>
+
+    <!-- Fake Distraction Notification Banner -->
+    <div class="fake-notification-banner" id="notifBanner">
+      <div class="notif-icon">💬</div>
+      <div class="notif-content">
+        <h4 id="notifTitle">WhatsApp: Mama</h4>
+        <p id="notifText">Kapan nikah le?</p>
+      </div>
+    </div>
+
+    <!-- Canvas Arena -->
+    <canvas id="flappyCanvas"></canvas>
+  </main>
+
+  <div class="flappy-controls-hint">
+    👉 Klik Layar / Tekan SPASI untuk Menukik ke Bawah
+  </div>
+
+  <!-- Game Over Modal -->
+  <div class="flappy-modal-overlay" id="flappyModal">
+    <div class="flappy-modal-card">
+      <h2>TABRAKAN MAUT! 💥</h2>
+      <div class="final-score-display" id="finalScoreDisplay">0</div>
+      <p id="finalDesc">Refleks bawaan lahir kebalik ya?</p>
+      <button class="btn-flappy-retry" id="btnFlappyRetry">Coba Lawan Kodrat Lagi</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio-fx.js"></script>
+  <script src="js/nav-bar.js"></script>
+  <script src="js/flappy-game.js"></script>
+</body>
+</html>

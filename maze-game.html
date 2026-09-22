@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Labirin Senggol Bacok // Uji Kesabaran Tangan</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/maze-game.css">
+</head>
+<body class="maze-game-page">
+
+  <!-- Header -->
+  <header class="maze-header">
+    <h1 class="maze-title">LABIRIN SENGGOL BACOK</h1>
+    <p class="maze-desc">Arahkan kursor dari <b>START</b> ke <b>FINISH</b> tanpa menyentuh dinding bertegangan tinggi!</p>
+  </header>
+
+  <!-- HUD -->
+  <aside class="maze-hud">
+    <div class="maze-hud-badge">
+      <span>Total Kesenggol:</span>
+      <span class="val" id="failCount">0</span>
+    </div>
+    <div class="maze-hud-badge">
+      <span>Tingkat Tremor Tangan:</span>
+      <span class="val" style="color: var(--maze-cyan);">99%</span>
+    </div>
+  </aside>
+
+  <!-- Arena Container -->
+  <main class="maze-arena-wrapper" id="mazeArena">
+    <div class="level-badge" id="levelBadge">LEVEL 1: PEMANASAN SANTAI</div>
+    <div class="shock-overlay" id="shockOverlay"></div>
+    <canvas id="mazeCanvas"></canvas>
+  </main>
+
+  <!-- Victory Modal -->
+  <div class="maze-modal-overlay" id="mazeModal">
+    <div class="maze-modal-card">
+      <h2>🏆 SAKTI MANDRAGUNA!</h2>
+      <p id="mazeStats">Tangan Anda seimbang bebas tremor!</p>
+      <button class="btn-maze-retry" id="btnMazeRetry">Mainkan Lagi Dari Awal</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio-fx.js"></script>
+  <script src="js/nav-bar.js"></script>
+  <script src="js/maze-game.js"></script>
+</body>
+</html>

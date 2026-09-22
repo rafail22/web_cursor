@@ -1,0 +1,266 @@
+/* Kuis Jebakan Batman Styling */
+
+:root {
+  --quiz-bg: #090a12;
+  --quiz-surface: rgba(18, 20, 32, 0.88);
+  --quiz-border: rgba(255, 255, 255, 0.12);
+  --quiz-purple: #9333ea;
+  --quiz-cyan: #06b6d4;
+  --quiz-amber: #f59e0b;
+  --quiz-red: #ef4444;
+  --quiz-green: #10b981;
+}
+
+body.quiz-game-page {
+  background-color: var(--quiz-bg);
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(147, 51, 234, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.1) 0%, transparent 45%);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 30px 20px 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+}
+
+/* Header */
+.quiz-header {
+  text-align: center;
+  max-width: 600px;
+  margin-bottom: 24px;
+}
+
+.quiz-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(26px, 4vw, 42px);
+  font-weight: 900;
+  background: linear-gradient(135deg, #fff 40%, var(--quiz-amber) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 6px;
+}
+
+.quiz-desc {
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+/* HUD (Lives & Timer) */
+.quiz-hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 580px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.lives-container {
+  display: flex;
+  gap: 6px;
+  font-size: 24px;
+}
+
+.quiz-timer-pill {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  padding: 6px 14px;
+  border-radius: 999px;
+  color: #fca5a5;
+  font-family: 'Syne', monospace;
+  font-size: 14px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.timer-bar-track {
+  width: 100%;
+  max-width: 580px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.timer-bar-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--quiz-green), var(--quiz-amber), var(--quiz-red));
+  border-radius: 999px;
+  transition: width 1s linear;
+}
+
+/* Question Stage Card */
+.quiz-card {
+  background: var(--quiz-surface);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--quiz-border);
+  border-radius: 24px;
+  padding: 36px;
+  max-width: 580px;
+  width: 100%;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.question-num-tag {
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--quiz-amber);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.question-text {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.35;
+  color: #fff;
+  margin-bottom: 28px;
+}
+
+/* Choices Grid */
+.choices-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.choice-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--quiz-border);
+  color: #f1f5f9;
+  padding: 18px 16px;
+  border-radius: 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.choice-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.choice-btn.correct {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: var(--quiz-green);
+  color: #6ee7b7;
+}
+
+.choice-btn.wrong {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: var(--quiz-red);
+  color: #fca5a5;
+  animation: shakeBtn 0.3s ease;
+}
+
+@keyframes shakeBtn {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+/* Question 2 Secret Red Button */
+.secret-red-dot {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 14px;
+  height: 14px;
+  background: #ff0044;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 6px #ff0044;
+  transition: transform 0.2s;
+}
+
+.secret-red-dot:hover {
+  transform: scale(1.3);
+}
+
+/* Question 3 Panic Countdown Button */
+.panic-button {
+  width: 100%;
+  padding: 24px;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #fff;
+  border: none;
+  border-radius: 16px;
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 0 25px rgba(239, 68, 68, 0.6);
+  animation: pulsePanic 1s infinite alternate;
+}
+
+@keyframes pulsePanic {
+  0% { transform: scale(0.98); }
+  100% { transform: scale(1.02); }
+}
+
+/* Modal Popup (Game Over / Win) */
+.quiz-modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(14px);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.quiz-modal-card {
+  background: #111422;
+  border: 2px solid var(--quiz-amber);
+  border-radius: 28px;
+  padding: 40px;
+  max-width: 460px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 0 60px rgba(245, 158, 11, 0.3);
+  animation: popIn 0.35s ease;
+}
+
+.quiz-modal-card.gameover {
+  border-color: var(--quiz-red);
+  box-shadow: 0 0 60px rgba(239, 68, 68, 0.4);
+}
+
+.btn-quiz-retry {
+  background: linear-gradient(135deg, var(--quiz-amber), #f97316);
+  color: #000;
+  font-family: 'Syne', sans-serif;
+  font-weight: 900;
+  padding: 15px 32px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 14px;
+}
+
+@media (max-width: 600px) {
+  .choices-grid {
+    grid-template-columns: 1fr;
+  }
+}

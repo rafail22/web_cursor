@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parkir Paralel Paling Mustahil // Inverted Ice Parking</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/parking-game.css">
+</head>
+<body class="parking-game-page">
+
+  <!-- Header -->
+  <header class="parking-header">
+    <div class="parking-badge">🚗 SIMULATOR PARKIR STIR TERBALIK</div>
+    <h1 class="parking-title">PARKIR PARALEL MUSTAHIL</h1>
+    <p class="parking-desc">
+      Parkirkan mobil merah ke kotak hijau di antara 2 hypercar. <b>PERINGATAN: STIR TERBALIK &amp; ASPAL LICIN ES!</b>
+    </p>
+  </header>
+
+  <!-- Stage Container -->
+  <main class="parking-stage-wrapper">
+    <div class="taxi-honk-balloon" id="taxiBalloon">TIIIN TIIIN! WOI CEPETAN!</div>
+    <canvas id="parkingCanvas"></canvas>
+  </main>
+
+  <!-- Virtual Touch / Mouse Controls -->
+  <div class="parking-controls-grid">
+    <button class="btn-ctrl" id="btnGasD" title="Maju (Panah Atas / W)">▲ MAJU (D)</button>
+    <button class="btn-ctrl" id="btnGasR" title="Mundur (Panah Bawah / S)">▼ MUNDUR (R)</button>
+    <button class="btn-ctrl" id="btnSteerL" title="Belok Kiri [Akan belok KANAN]">◀ KIRI (KEBALIK)</button>
+    <button class="btn-ctrl" id="btnSteerR" title="Belok Kanan [Akan belok KIRI]">▶ KANAN (KEBALIK)</button>
+    <button class="btn-ctrl brake" id="btnBrake" title="Rem Tangan (Spasi)">🛑 REM</button>
+  </div>
+
+  <!-- Modal -->
+  <div class="parking-modal-overlay" id="parkingModal">
+    <div class="parking-modal-card" id="parkingModalCard">
+      <h2 id="parkingModalTitle">HASIL PARKIR</h2>
+      <p id="parkingModalDesc">Keterangan hasil parkir...</p>
+      <button class="btn-parking-retry" id="btnParkingRetry">Coba Parkir Lagi</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio-fx.js"></script>
+  <script src="js/nav-bar.js"></script>
+  <script src="js/parking-game.js"></script>
+</body>
+</html>

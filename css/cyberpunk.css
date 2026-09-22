@@ -1,0 +1,584 @@
+/* Streetwear / Dark Cyberpunk Brutalist Portfolio */
+
+:root {
+  --cyber-black: #060709;
+  --cyber-dark: #0e1015;
+  --cyber-card: #12151c;
+  --cyber-acid: #ccff00;
+  --cyber-acid-glow: rgba(204, 255, 0, 0.4);
+  --cyber-blue: #0055ff;
+  --cyber-cyan: #00f0ff;
+  --cyber-border: rgba(255, 255, 255, 0.15);
+  --cyber-grid: rgba(255, 255, 255, 0.04);
+}
+
+body.cyberpunk-page {
+  background-color: var(--cyber-black);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  position: relative;
+  cursor: none; /* custom cursor will be active */
+}
+
+/* Custom Minimal Cyberpunk Crosshair Cursor */
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background: var(--cyber-acid);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.05s ease;
+}
+
+.custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--cyber-acid);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999998;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  box-shadow: 0 0 10px rgba(204, 255, 0, 0.2);
+}
+
+.custom-cursor-ring.active-hover {
+  width: 54px;
+  height: 54px;
+  background: rgba(204, 255, 0, 0.12);
+  border-color: #fff;
+}
+
+/* Blueprint / Wireframe Grid Overlay (toggleable) */
+.cyber-blueprint-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: 
+    linear-gradient(to right, var(--cyber-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--cyber-grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+body.wireframe-mode .cyber-blueprint-grid {
+  --cyber-grid: rgba(204, 255, 0, 0.15);
+  background-size: 20px 20px;
+}
+
+/* Overdrive Mode (High Saturation & Contrast) */
+body.overdrive-mode {
+  filter: contrast(125%) saturate(140%);
+}
+
+/* Top Brutalist Status Bar */
+.cyber-topbar {
+  border-bottom: 1px solid var(--cyber-border);
+  padding: 12px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #8a99ad;
+  background: rgba(6, 7, 9, 0.9);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+.topbar-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.live-pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--cyber-acid);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--cyber-acid);
+  animation: pulseRate 1.5s infinite;
+}
+
+@keyframes pulseRate {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.6; }
+}
+
+/* Hero Section */
+.cyber-hero {
+  padding: 60px 32px 40px;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-meta-label {
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  color: var(--cyber-acid);
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.hero-headline {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(42px, 6vw, 76px);
+  font-weight: 900;
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  margin-bottom: 24px;
+}
+
+.hero-headline span.highlight {
+  color: var(--cyber-acid);
+  text-decoration: underline;
+  text-decoration-thickness: 4px;
+}
+
+.hero-headline span.outline {
+  -webkit-text-stroke: 1.5px #fff;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+  font-size: 16px;
+  color: #94a3b8;
+  line-height: 1.6;
+  max-width: 520px;
+  margin-bottom: 30px;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-cyber-primary {
+  background: var(--cyber-acid);
+  color: #000;
+  font-family: 'Syne', sans-serif;
+  font-weight: 900;
+  font-size: 15px;
+  padding: 14px 28px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  transition: all 0.2s ease;
+}
+
+.btn-cyber-primary:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px var(--cyber-acid-glow);
+}
+
+.btn-cyber-outline {
+  background: transparent;
+  color: #fff;
+  border: 1px solid var(--cyber-border);
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  padding: 14px 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-cyber-outline:hover {
+  border-color: var(--cyber-acid);
+  color: var(--cyber-acid);
+}
+
+/* Distorted Glitch Photo Frame */
+.glitch-frame-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: var(--cyber-dark);
+  border: 1px solid var(--cyber-border);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+}
+
+.glitch-frame-container::before {
+  content: 'FIG. 009 // OPERATOR PORTRAIT';
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+  color: var(--cyber-acid);
+  z-index: 10;
+  letter-spacing: 1px;
+}
+
+.glitch-frame-container::after {
+  content: 'BARCODE [||||| ||| ||||||]';
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+  color: #64748b;
+  z-index: 10;
+}
+
+.glitch-canvas-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(80%) contrast(120%);
+  transition: filter 0.3s;
+}
+
+.glitch-frame-container:hover .glitch-canvas-photo {
+  filter: grayscale(0%) contrast(130%);
+}
+
+/* Holographic Glitch lines */
+.glitch-slice-bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--cyber-acid);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Bento Grid Layout Section */
+.cyber-bento-section {
+  max-width: 1300px;
+  margin: 40px auto 120px;
+  padding: 0 32px;
+  position: relative;
+  z-index: 2;
+}
+
+.bento-section-header {
+  font-family: 'Syne', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bento-section-header::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--cyber-border);
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+.bento-card {
+  background: var(--cyber-card);
+  border: 1px solid var(--cyber-border);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s, transform 0.25s;
+}
+
+.bento-card:hover {
+  border-color: rgba(204, 255, 0, 0.6);
+  transform: translateY(-3px);
+}
+
+/* Module 1: Live Music Player (span 6) */
+.bento-music {
+  grid-column: span 6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bento-card-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.track-info-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.music-play-btn {
+  width: 52px;
+  height: 52px;
+  background: var(--cyber-acid);
+  color: #000;
+  border-radius: 50%;
+  border: none;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.music-play-btn:hover {
+  transform: scale(1.08);
+}
+
+.track-details h4 {
+  font-family: 'VT323', monospace;
+  font-size: 20px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.track-details p {
+  font-size: 12px;
+  color: #8a99ad;
+}
+
+#visualizerCanvas {
+  width: 100%;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Module 2: Code Commit Status (span 6) */
+.bento-commits {
+  grid-column: span 6;
+}
+
+.commit-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.commit-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.commit-hash {
+  font-family: 'VT323', monospace;
+  color: var(--cyber-acid);
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.commit-msg {
+  font-size: 13px;
+  color: #cbd5e1;
+  flex: 1;
+}
+
+.commit-time {
+  font-size: 11px;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+/* Module 3: Hardware Style Toggles (span 4) */
+.bento-toggles {
+  grid-column: span 4;
+}
+
+.toggle-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.toggle-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-item span {
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  color: #cbd5e1;
+}
+
+/* Cyber switch checkbox */
+.cyber-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 22px;
+}
+
+.cyber-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #272a34;
+  border: 1px solid var(--cyber-border);
+  transition: .3s;
+}
+
+.switch-slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #fff;
+  transition: .3s;
+}
+
+input:checked + .switch-slider {
+  background-color: var(--cyber-acid);
+}
+
+input:checked + .switch-slider:before {
+  transform: translateX(22px);
+  background-color: #000;
+}
+
+/* Module 4: Quick Contact & Drop Tags (span 4) */
+.bento-tags {
+  grid-column: span 4;
+}
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.cyber-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--cyber-border);
+  color: #fff;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.5px;
+}
+
+.cyber-tag:hover {
+  background: var(--cyber-blue);
+  border-color: var(--cyber-cyan);
+  box-shadow: 0 0 15px rgba(0, 102, 255, 0.5);
+  transform: scale(1.04);
+}
+
+/* Module 5: Apparel Drops (span 4) */
+.bento-drops {
+  grid-column: span 4;
+}
+
+.drops-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.drop-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px dashed var(--cyber-border);
+  font-size: 13px;
+}
+
+.drop-badge {
+  font-family: 'VT323', monospace;
+  font-size: 15px;
+  padding: 2px 6px;
+}
+
+.drop-badge.soldout {
+  background: #334155;
+  color: #94a3b8;
+}
+
+.drop-badge.limited {
+  background: var(--cyber-acid);
+  color: #000;
+  font-weight: bold;
+}
+
+@media (max-width: 900px) {
+  body.cyberpunk-page {
+    cursor: auto;
+  }
+  .custom-cursor-dot, .custom-cursor-ring {
+    display: none;
+  }
+  .cyber-hero {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .bento-music, .bento-commits, .bento-toggles, .bento-tags, .bento-drops {
+    grid-column: span 12;
+  }
+}

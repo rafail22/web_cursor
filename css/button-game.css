@@ -1,0 +1,314 @@
+/* Impossible Button Game - Modern Minimalist Obsidian, Electric Purple & Cyan */
+
+:root {
+  --game-bg: #07080d;
+  --game-surface: rgba(18, 20, 32, 0.7);
+  --game-border: rgba(255, 255, 255, 0.1);
+  --electric-purple: #b026ff;
+  --bright-cyan: #00f0ff;
+  --neon-pink: #ff007f;
+}
+
+body.button-game-page {
+  background-color: var(--game-bg);
+  background-image: 
+    radial-gradient(circle at 50% 20%, rgba(176, 38, 255, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(0, 240, 255, 0.08) 0%, transparent 50%);
+  color: #fff;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  user-select: none;
+}
+
+/* Background subtle grid */
+.game-grid-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  pointer-events: none;
+}
+
+/* Header & Title */
+.game-header {
+  position: absolute;
+  top: 28px;
+  left: 36px;
+  z-index: 20;
+}
+
+.game-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #fff 30%, var(--bright-cyan) 80%, var(--electric-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.game-subtitle {
+  font-size: 14px;
+  color: #8a99ad;
+  margin-top: 4px;
+}
+
+/* HUD / Scoreboard Widget */
+.game-hud {
+  position: absolute;
+  top: 28px;
+  right: 36px;
+  z-index: 20;
+  display: flex;
+  gap: 16px;
+}
+
+.hud-card {
+  background: var(--game-surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--game-border);
+  padding: 12px 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  min-width: 150px;
+}
+
+.hud-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #718096;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.hud-val {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--bright-cyan);
+  font-family: 'Syne', sans-serif;
+}
+
+.rage-bar-wrapper {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.rage-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #10b981, #f59e0b, #ff0055);
+  border-radius: 999px;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.rage-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: #a0aec0;
+  margin-top: 4px;
+}
+
+/* Play Area Container */
+.play-arena {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+/* Center Stage CTA Button */
+.troll-btn-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 50;
+}
+
+.troll-btn {
+  position: relative;
+  background: linear-gradient(135deg, #b026ff 0%, #ff007f 100%);
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  padding: 20px 42px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 
+    0 0 25px rgba(176, 38, 255, 0.6), 
+    0 10px 40px rgba(0, 0, 0, 0.6),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+
+.troll-btn::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--bright-cyan), var(--electric-purple), var(--neon-pink));
+  z-index: -1;
+  filter: blur(8px);
+  opacity: 0.8;
+  animation: pulseGlow 2s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% { opacity: 0.6; transform: scale(0.98); }
+  100% { opacity: 1; transform: scale(1.03); }
+}
+
+/* Floating Mocking Speech Bubbles */
+.speech-bubble {
+  position: absolute;
+  background: rgba(18, 20, 32, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  padding: 10px 18px;
+  border-radius: 20px;
+  border-bottom-left-radius: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 240, 255, 0.25);
+  pointer-events: none;
+  z-index: 60;
+  animation: floatFade 2.4s forwards cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  transform-origin: bottom left;
+}
+
+@keyframes floatFade {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.8);
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(-20px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-35px) scale(0.9);
+  }
+}
+
+/* Screen Shake Effect for high rage */
+@keyframes screenRageShake {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  20% { transform: translate(-4px, 4px) rotate(-0.5deg); }
+  40% { transform: translate(4px, -4px) rotate(0.5deg); }
+  60% { transform: translate(-3px, 2px) rotate(-0.3deg); }
+  80% { transform: translate(3px, -2px) rotate(0.3deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.body-shake {
+  animation: screenRageShake 0.25s infinite ease-in-out;
+}
+
+/* Victory Modal */
+.victory-modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.victory-card {
+  background: #121422;
+  border: 2px solid var(--bright-cyan);
+  border-radius: 28px;
+  padding: 40px 48px;
+  max-width: 480px;
+  text-align: center;
+  box-shadow: 0 0 60px rgba(0, 240, 255, 0.4);
+  animation: popIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.victory-card h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 32px;
+  color: var(--bright-cyan);
+  margin-bottom: 12px;
+}
+
+.victory-card p {
+  color: #cbd5e1;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.btn-restart {
+  background: linear-gradient(135deg, var(--electric-purple), var(--bright-cyan));
+  color: #fff;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 999px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(176, 38, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+  .game-header {
+    top: 16px;
+    left: 20px;
+  }
+  .game-hud {
+    top: 80px;
+    right: 20px;
+    left: 20px;
+    justify-content: space-between;
+  }
+  .hud-card {
+    min-width: 120px;
+    padding: 8px 14px;
+  }
+  .troll-btn {
+    font-size: 16px;
+    padding: 16px 28px;
+  }
+}

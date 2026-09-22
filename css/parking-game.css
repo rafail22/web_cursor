@@ -1,0 +1,206 @@
+/* Parkir Paralel Paling Mustahil Styling */
+
+:root {
+  --park-bg: #090b10;
+  --park-surface: rgba(18, 22, 34, 0.9);
+  --park-border: rgba(255, 255, 255, 0.12);
+  --park-yellow: #eab308;
+  --park-red: #ef4444;
+  --park-green: #10b981;
+  --park-cyan: #00f0ff;
+}
+
+body.parking-game-page {
+  background-color: var(--park-bg);
+  background-image: 
+    radial-gradient(circle at 50% 20%, rgba(234, 179, 8, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 50% 80%, rgba(239, 68, 68, 0.08) 0%, transparent 60%);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 24px 20px 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+  overflow-x: hidden;
+}
+
+/* Header */
+.parking-header {
+  text-align: center;
+  max-width: 650px;
+  margin-bottom: 16px;
+}
+
+.parking-badge {
+  display: inline-block;
+  background: rgba(234, 179, 8, 0.15);
+  border: 1px solid rgba(234, 179, 8, 0.4);
+  color: var(--park-yellow);
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.parking-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(24px, 4vw, 38px);
+  font-weight: 900;
+  background: linear-gradient(135deg, #fff, var(--park-yellow));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 6px;
+}
+
+.parking-desc {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.parking-desc b {
+  color: #fca5a5;
+}
+
+/* Arena Stage */
+.parking-stage-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 480px;
+  background: #11141c;
+  border: 2px solid var(--park-border);
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+}
+
+#parkingCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Taxi Honk Balloon */
+.taxi-honk-balloon {
+  position: absolute;
+  top: 360px;
+  left: 30px;
+  background: #eab308;
+  color: #000;
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+  padding: 8px 14px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(234, 179, 8, 0.5);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.2s ease;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.taxi-honk-balloon.honk {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Virtual Touch Controls */
+.parking-controls-grid {
+  display: flex;
+  gap: 16px;
+  margin-top: 18px;
+  max-width: 600px;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-ctrl {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--park-border);
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 14px 22px;
+  border-radius: 14px;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-ctrl:active, .btn-ctrl.active {
+  background: var(--park-yellow);
+  color: #000;
+  transform: scale(0.95);
+}
+
+.btn-ctrl.brake:active, .btn-ctrl.brake.active {
+  background: var(--park-red);
+  color: #fff;
+}
+
+/* Modal */
+.parking-modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(14px);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.parking-modal-card {
+  background: #111422;
+  border: 2px solid var(--park-green);
+  border-radius: 28px;
+  padding: 40px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 0 60px rgba(16, 185, 129, 0.3);
+  animation: popIn 0.35s ease;
+}
+
+.parking-modal-card.crash {
+  border-color: var(--park-red);
+  box-shadow: 0 0 60px rgba(239, 68, 68, 0.4);
+}
+
+.parking-modal-card h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.parking-modal-card p {
+  color: #94a3b8;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.btn-parking-retry {
+  background: linear-gradient(135deg, var(--park-yellow), #f97316);
+  color: #000;
+  font-family: 'Syne', sans-serif;
+  font-weight: 900;
+  padding: 15px 36px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bertahan Sampai Gajian // Simulator Finansial</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/payday.css">
+</head>
+<body class="payday-page">
+
+  <!-- Sticky Top HUD -->
+  <header class="payday-topbar">
+    <div class="topbar-stats-row">
+      <!-- Brand -->
+      <div class="payday-brand">
+        <div class="payday-logo-icon">Rp</div>
+        <div>
+          <h1 class="payday-title">BERTAHAN GAJIAN</h1>
+        </div>
+      </div>
+
+      <!-- Live Cash Balance -->
+      <div class="balance-widget">
+        <span class="balance-label">Saldo Rekening:</span>
+        <span class="balance-amount" id="balanceAmount">Rp 15.000.000</span>
+      </div>
+
+      <!-- Live Stat Meters -->
+      <div class="meters-group">
+        <!-- Happiness Meter -->
+        <div class="meter-card" title="Tingkat Kebahagiaan">
+          <span class="meter-icon">😊</span>
+          <div class="meter-info">
+            <span class="meter-name">Bahagia: <b id="happinessText">85%</b></span>
+            <div class="meter-track">
+              <div class="meter-fill happiness" id="happinessFill" style="width: 85%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coffee Addiction Level -->
+        <div class="meter-card" title="Tingkat Kecanduan Kopi">
+          <span class="meter-icon">☕</span>
+          <div class="meter-info">
+            <span class="meter-name">Kafein: <b id="coffeeText">35%</b></span>
+            <div class="meter-track">
+              <div class="meter-fill coffee" id="coffeeFill" style="width: 35%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 30-Day Timeline Progress -->
+    <div class="timeline-container">
+      <div class="timeline-meta">
+        <span id="timelineDayLabel">Hari 1 dari 30</span>
+        <span>🏁 Target Gajian: Hari 30</span>
+      </div>
+      <div class="timeline-track">
+        <div class="timeline-fill" id="timelineFill"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Simulator Arena -->
+  <main class="simulator-arena">
+    <p class="deck-instruction">
+      👈 Geser Kiri untuk <b>Tolak</b> | Geser Kanan untuk <b>Pasrah</b> 👉
+    </p>
+
+    <!-- Interactive Card Deck Stack -->
+    <div class="card-stack" id="cardStack">
+      <!-- Dynamic swipe card renders here -->
+    </div>
+
+    <!-- Control Action Buttons -->
+    <div class="action-controls-row">
+      <button class="btn-choice decline" id="btnDecline" title="Tolak Pengeluaran (Panah Kiri)">
+        <span>❌</span>
+        <span>TOLAK</span>
+      </button>
+      <button class="btn-choice accept" id="btnAccept" title="Pasrah Bayar (Panah Kanan)">
+        <span>✅</span>
+        <span>PASRAH</span>
+      </button>
+    </div>
+  </main>
+
+  <!-- Game Over / Victory Modal -->
+  <div class="payday-modal-overlay" id="paydayModal">
+    <div class="payday-modal-card" id="modalCard">
+      <div class="modal-result-icon" id="modalIcon">🎉</div>
+      <h2 class="modal-result-title" id="modalTitle">GAJIAN TIBA!</h2>
+      <p class="modal-result-desc" id="modalDesc">Selamat telah bertahan hidup sampai akhir bulan.</p>
+      
+      <div class="modal-stats-summary" id="modalSummary">
+        <!-- Dynamic ending stats -->
+      </div>
+
+      <button class="btn-payday-retry" id="btnRetry">Coba Bulan Depan</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio-fx.js"></script>
+  <script src="js/nav-bar.js"></script>
+  <script src="js/payday.js"></script>
+</body>
+</html>

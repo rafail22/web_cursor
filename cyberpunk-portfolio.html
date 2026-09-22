@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CYBERPUNK // Streetwear Portfolio & Archive</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/cyberpunk.css">
+</head>
+<body class="cyberpunk-page">
+
+  <!-- Custom Minimalist Cyberpunk Cursor -->
+  <div class="custom-cursor-dot" id="cursorDot"></div>
+  <div class="custom-cursor-ring" id="cursorRing"></div>
+
+  <!-- Background Wireframe Grid -->
+  <div class="cyber-blueprint-grid"></div>
+
+  <!-- Top Brutalist Status Bar -->
+  <header class="cyber-topbar">
+    <div class="topbar-tag">
+      <span class="live-pulse"></span>
+      <span>SYS.STATUS: OPERATIONAL // KERNEL 0.9.8b</span>
+    </div>
+    <div class="topbar-tag">
+      <span>SYS.LOC: 35.6762° N, 139.6503° E // TOKYO DOCKS</span>
+    </div>
+    <div class="topbar-tag">
+      <span>ARCHIVE VOL. 2026</span>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="cyber-hero">
+    <div class="hero-left-col">
+      <span class="hero-meta-label">// EXPERIMENTAL CODE & SUB-ZERO APPAREL</span>
+      <h1 class="hero-headline">
+        STREETWEAR <span class="highlight">ARCHIVE</span> &amp; <span class="outline">CYBERPUNK</span> INTERFACES.
+      </h1>
+      <p class="hero-description">
+        Bridging brutalist technical aesthetics, tactile web interaction, and utilitarian street culture. Hand-crafted systems engineered for speed and raw visual intensity.
+      </p>
+      <div class="hero-cta-group">
+        <button class="btn-cyber-primary" onclick="window.location.href='#bentoGrid'">EXPLORE MODULES ⚡</button>
+        <button class="btn-cyber-outline" onclick="window.location.href='index.html'">VIEW MASTER HUB</button>
+      </div>
+    </div>
+
+    <!-- Distorted Glitch Photo Frame -->
+    <div class="hero-right-col">
+      <div class="glitch-frame-container" id="glitchFrame">
+        <canvas id="glitchCanvas" class="glitch-canvas-photo"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bento Grid Section -->
+  <section class="cyber-bento-section" id="bentoGrid">
+    <div class="bento-section-header">
+      <span>// TELEMETRY &amp; INTERACTIVE MICRO-MODULES</span>
+    </div>
+
+    <div class="bento-grid">
+      <!-- Module 1: Live Music Player -->
+      <div class="bento-card bento-music">
+        <div>
+          <div class="bento-card-title">
+            <span>LIVE SYNTHWAVE AUDIO</span>
+            <span style="color: var(--cyber-acid); font-family: 'VT323'; font-size: 18px;">140 BPM</span>
+          </div>
+          <div class="track-info-row">
+            <button class="music-play-btn" id="musicPlayBtn" title="Play Synthesizer Beat">▶</button>
+            <div class="track-details">
+              <h4>NEURAL_DRIFT_04.FLAC</h4>
+              <p>Procedural Sub-Bass &amp; Cyber Hi-Hats</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <canvas id="visualizerCanvas"></canvas>
+        </div>
+      </div>
+
+      <!-- Module 2: Latest Code Commit Status -->
+      <div class="bento-card bento-commits">
+        <div class="bento-card-title">
+          <span>LATEST REPO COMMIT</span>
+          <span style="color: #38bdf8; font-family: 'VT323'; font-size: 18px;">BRANCH: MAIN [PASSING]</span>
+        </div>
+        <div class="commit-timeline">
+          <div class="commit-entry">
+            <span class="commit-hash">#a4b912c</span>
+            <span class="commit-msg">feat(matrix): optimize WebGL scanline rendering buffer</span>
+            <span class="commit-time">14m ago</span>
+          </div>
+          <div class="commit-entry">
+            <span class="commit-hash">#8f0923d</span>
+            <span class="commit-msg">perf(audio): procedural high-pass filter frequency modulation</span>
+            <span class="commit-time">2h ago</span>
+          </div>
+          <div class="commit-entry">
+            <span class="commit-hash">#e21175a</span>
+            <span class="commit-msg">chore(deploy): push production containers to edge CDN</span>
+            <span class="commit-time">5h ago</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 3: Hardware Style Toggles -->
+      <div class="bento-card bento-toggles">
+        <div class="bento-card-title">
+          <span>SYSTEM CONTROLS</span>
+        </div>
+        <div class="toggle-list">
+          <div class="toggle-item">
+            <span>OVERDRIVE CONTRAST</span>
+            <label class="cyber-switch">
+              <input type="checkbox" id="toggleOverdrive">
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+          <div class="toggle-item">
+            <span>WIREFRAME GRID</span>
+            <label class="cyber-switch">
+              <input type="checkbox" id="toggleWireframe">
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+          <div class="toggle-item">
+            <span>CHROMATIC GLITCH</span>
+            <label class="cyber-switch">
+              <input type="checkbox" id="toggleGlitch">
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 4: Quick Contact & Drop Tags -->
+      <div class="bento-card bento-tags">
+        <div class="bento-card-title">
+          <span>QUICK COMMS (CLICK TO COPY)</span>
+        </div>
+        <div class="tag-cloud">
+          <button class="cyber-tag" title="Click to copy">INQUIRE WORK</button>
+          <button class="cyber-tag" title="Click to copy">DROP COLLAB</button>
+          <button class="cyber-tag" title="Click to copy">ENCRYPTED PGP</button>
+          <button class="cyber-tag" title="Click to copy">DISCORD: @NEO_DEV</button>
+          <button class="cyber-tag" title="Click to copy">GITHUB: @CYBER_UNIT</button>
+        </div>
+      </div>
+
+      <!-- Module 5: Limited Apparel Drops -->
+      <div class="bento-card bento-drops">
+        <div class="bento-card-title">
+          <span>STREETWEAR DROPS</span>
+        </div>
+        <div class="drops-list">
+          <div class="drop-item">
+            <span>DROP 001 // CYBERWEAR HOODIE</span>
+            <span class="drop-badge soldout">SOLD OUT</span>
+          </div>
+          <div class="drop-item">
+            <span>DROP 002 // TACTICAL CHEST RIG</span>
+            <span class="drop-badge limited">LIMITED 50/50</span>
+          </div>
+          <div class="drop-item">
+            <span>DROP 003 // ACID LOGO BALACLAVA</span>
+            <span class="drop-badge limited">NEW RELEASE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="js/audio-fx.js"></script>
+  <script src="js/nav-bar.js"></script>
+  <script src="js/cyberpunk.js"></script>
+</body>
+</html>

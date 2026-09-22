@@ -1,0 +1,206 @@
+/* Flappy Kursor: Fisika Terbalik Styling */
+
+:root {
+  --flap-bg: #070913;
+  --flap-surface: rgba(18, 22, 36, 0.9);
+  --flap-border: rgba(255, 255, 255, 0.12);
+  --flap-cyan: #00f0ff;
+  --flap-pink: #ff007f;
+  --flap-amber: #f59e0b;
+  --flap-green: #10b981;
+}
+
+body.flappy-game-page {
+  background-color: var(--flap-bg);
+  background-image: 
+    radial-gradient(circle at 50% 20%, rgba(255, 0, 127, 0.1) 0%, transparent 60%),
+    radial-gradient(circle at 50% 80%, rgba(0, 240, 255, 0.08) 0%, transparent 60%);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 24px 20px 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+  overflow-x: hidden;
+}
+
+/* Header */
+.flappy-header {
+  text-align: center;
+  max-width: 600px;
+  margin-bottom: 16px;
+}
+
+.flappy-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--flap-cyan), var(--flap-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 6px;
+}
+
+.flappy-desc {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.flappy-desc b {
+  color: var(--flap-pink);
+}
+
+/* Game Stage Arena */
+.flappy-stage-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  height: 580px;
+  border: 2px solid var(--flap-border);
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  background: #090c16;
+}
+
+#flappyCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* In-game HUD overlay */
+.flappy-hud-overlay {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.flappy-score-badge {
+  font-family: 'Syne', sans-serif;
+  font-size: 40px;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+}
+
+/* Troll Fake Distraction Notification */
+.fake-notification-banner {
+  position: absolute;
+  top: 140px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-30px);
+  width: 88%;
+  background: rgba(18, 24, 38, 0.95);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 12px 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fake-notification-banner.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.notif-icon {
+  font-size: 24px;
+}
+
+.notif-content h4 {
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.notif-content p {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+/* Control Hint Bar */
+.flappy-controls-hint {
+  margin-top: 14px;
+  font-size: 13px;
+  color: #64748b;
+  text-align: center;
+}
+
+/* Game Over Modal */
+.flappy-modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.flappy-modal-card {
+  background: #111422;
+  border: 2px solid var(--flap-pink);
+  border-radius: 28px;
+  padding: 36px;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 0 60px rgba(255, 0, 127, 0.3);
+  animation: popIn 0.35s ease;
+}
+
+.flappy-modal-card h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 30px;
+  color: var(--flap-pink);
+  margin-bottom: 10px;
+}
+
+.flappy-modal-card p {
+  color: #94a3b8;
+  font-size: 15px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.final-score-display {
+  font-family: 'Syne', sans-serif;
+  font-size: 48px;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 18px;
+}
+
+.btn-flappy-retry {
+  background: linear-gradient(135deg, var(--flap-pink), var(--flap-cyan));
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+  padding: 15px 36px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 25px rgba(255, 0, 127, 0.5);
+}
