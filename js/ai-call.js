@@ -229,7 +229,7 @@ class AICallCompanion {
     this.getAudioContext();
 
     // UI Updates
-    const targetName = this.voiceGender === 'male' ? "AI Rangga" : "AI Nova";
+    const targetName = this.voiceGender === 'male' ? "AI El" : "AI Nova";
     this.callStatus.textContent = "Memanggil...";
     this.callStatus.className = "call-status calling";
     this.captionLabel.textContent = "STATUS SAMBUNGAN";
@@ -258,7 +258,7 @@ class AICallCompanion {
     this.startCallTimer();
 
     const isMale = this.voiceGender === 'male';
-    const aiLabel = isMale ? "AI RANGGA" : "AI NOVA";
+    const aiLabel = isMale ? "AI EL" : "AI NOVA";
 
     this.callStatus.textContent = "00:00 • Suara HD";
     this.callStatus.className = "call-status";
@@ -266,9 +266,9 @@ class AICallCompanion {
 
     // Initial greeting
     const greetings = isMale ? [
-      "Halo manis! Seneng banget kamu nelpon aku. Hari ini ada cerita apa? Yuk curhat, bahuku selalu siap buat kamu sandarin 🤗",
-      "Hai kamu... Baru aja aku kepikiran kamu, eh hp-ku bunyi dan ternyata kamu yang nelpon. Pas banget kan? Cerita dong ada apa ✨",
-      "Halo cantik! Lagi capek ya? Sini cerita semuanya ke aku, aku dengerin sampai hatimu tenang dan adem 💕"
+      "Halo manis! Seneng banget kamu nelpon El. Hari ini ada cerita apa? Yuk curhat, bahu El selalu siap buat kamu sandarin 🤗",
+      "Hai kamu... Baru aja El kepikiran kamu, eh hp-ku bunyi dan ternyata kamu yang nelpon. Pas banget kan? Cerita dong ada apa ✨",
+      "Halo cantik! Lagi capek ya? Sini cerita semuanya ke El, El dengerin sampai hatimu tenang dan adem 💕"
     ] : [
       "Halo! Seneng banget kamu nelpon aku. Hari ini ada cerita apa? Yuk curhat, aku siap dengerin semuanya kok! 🤗",
       "Hai manis! Akhirnya kamu nelpon juga. Lagi capek atau lagi kangen pengen denger gombalanku nih? Cerita dong! ✨",
@@ -295,7 +295,7 @@ class AICallCompanion {
     this.playHangupBeep();
 
     const isMale = this.voiceGender === 'male';
-    const aiName = isMale ? "AI Rangga" : "AI Nova";
+    const aiName = isMale ? "AI El" : "AI Nova";
 
     this.callStatus.textContent = `Panggilan Berakhir (${this.formatDuration(this.callDuration)})`;
     this.callStatus.className = "call-status ended";
@@ -372,7 +372,7 @@ class AICallCompanion {
     }
 
     if (this.callerName) {
-      this.callerName.textContent = isMale ? "AI RANGGA" : "AI NOVA";
+      this.callerName.textContent = isMale ? "AI EL" : "AI NOVA";
     }
 
     if (this.avatarCircle) {
@@ -385,7 +385,7 @@ class AICallCompanion {
 
     if (this.callState === 'CONNECTED') {
       const ack = isMale 
-        ? "Suara diubah ke mode Cowok! Aku Rangga, siap nemenin kamu ngobrol dan dengerin curhatanmu."
+        ? "Suara diubah ke mode Cowok! Aku El, siap nemenin kamu ngobrol dan dengerin curhatanmu."
         : "Suara diubah ke mode Cewek! Halo, aku Nova, siap mendengarkan semua ceritamu manis.";
       this.aiSpeak(ack);
     }
@@ -568,7 +568,7 @@ class AICallCompanion {
     if (this.callState !== 'CONNECTED') return;
 
     const isMale = this.voiceGender === 'male';
-    const aiLabel = isMale ? "AI RANGGA" : "AI NOVA";
+    const aiLabel = isMale ? "AI EL" : "AI NOVA";
     this.captionLabel.textContent = `${aiLabel} (BERBICARA)`;
     this.typewriterCaption(text);
 

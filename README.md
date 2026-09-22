@@ -7,9 +7,10 @@ Koleksi 12 aplikasi web dan game mikro interaktif unik yang dibangun dengan **HT
 ## 🎮 Daftar 12 Game & Web Experience
 
 ### 🤖 Zona Kecerdasan Buatan (AI Voice Call):
-1. **[AI Nova: Teman Curhat Teleponan Real-Time](ai-call.html)**: Simulasi panggilan telepon interaktif tanpa kamera!
+1. **[AI El: Teman Curhat Teleponan Real-Time](ai-call.html)**: Simulasi panggilan telepon interaktif tanpa kamera!
    - 📞 **Panggilan Suara Realistis**: Dilengkapi nada sambung telepon (*tuuutt...*), timer durasi obrolan, dan tombol tutup telepon 🔴.
-   - 🎙️ **Input Suara Mikrofon (Speech-to-Text)**: Bicara langsung lewat mic HP / laptop, AI Nova akan menyimak curhatanmu.
+   - 👨 **Suara Cowok Bariton (Pria)**: Karakter cowok perhatian dengan nada suara hangat dan menenangkan.
+   - 🎙️ **Input Suara Mikrofon (Speech-to-Text)**: Bicara langsung lewat mic HP / laptop, AI El akan menyimak curhatanmu.
    - 🗣️ **Suara Balasan AI (Text-to-Speech)**: AI membalas dengan suara Bahasa Indonesia yang hangat, peka, dan tidak tumpang-tindih.
    - 🌊 **Audio Soundwave Visualizer**: Canvas gelombang suara yang bergerak dinamis mengikuti ritme obrolan telepon.
    - 💬 **Pilihan Topik Cepat & Chat Box**: Curhat seputar kerjaan capek, galau asmara, kesepian, pusing kuliah, hingga minta digombalin!
