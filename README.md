@@ -1,19 +1,18 @@
-# ⚡ Web Cursor - 12 Interactive Web Experiences, Rage Games & AI Vision
+# ⚡ Web Cursor - 12 Interactive Web Experiences, Rage Games & AI Voice Call
 
-Koleksi 12 aplikasi web dan game mikro interaktif unik yang dibangun dengan **HTML5, CSS3, Vanilla JavaScript**, **Web Audio API** prosedural, dan **Web Speech API & Computer Vision** (100% offline & zero dependencies).
+Koleksi 12 aplikasi web dan game mikro interaktif unik yang dibangun dengan **HTML5, CSS3, Vanilla JavaScript**, **Web Audio API** prosedural, dan **Web Speech API (Speech Recognition & Speech Synthesis)** (100% offline & zero dependencies).
 
 ---
 
 ## 🎮 Daftar 12 Game & Web Experience
 
-### 🤖 Zona Kecerdasan Buatan (AI Vision):
-1. **[AI Vision: Teman Curhat & Gombal Real-Time](ai-vision.html)**: AI deteksi ekspresi wajah langsung dari webcam tanpa server!
-   - 💖 **Senyum**: Dihujani gombalan maut & pujian manis (*"Senyummu mengalihkan duniaku!"*).
-   - 🥺 **Sedih / Cemberut**: Dihibur & disemangati dengan penuh kasih sayang (*"Hey, kamu berharga banget..."*).
-   - 😲 **Kaget**: Reaksi heboh & lucu (*"Santai bestie, jangan panik!"*).
-   - 😡 **Marah**: Kata penenang & humor pereda emosi (*"Tarik napas... buang mantannya!"*).
-   - 🎙️ **Text-to-Speech (Suara Bahasa Indonesia)**: AI membacakan gombalan secara otomatis.
-   - 📸 **Download Selfie Hologram**: Ambil foto polaroid berhiaskan stiker ekspresi & gombalan untuk dibagikan ke medsos!
+### 🤖 Zona Kecerdasan Buatan (AI Voice Call):
+1. **[AI Nova: Teman Curhat Teleponan Real-Time](ai-call.html)**: Simulasi panggilan telepon interaktif tanpa kamera!
+   - 📞 **Panggilan Suara Realistis**: Dilengkapi nada sambung telepon (*tuuutt...*), timer durasi obrolan, dan tombol tutup telepon 🔴.
+   - 🎙️ **Input Suara Mikrofon (Speech-to-Text)**: Bicara langsung lewat mic HP / laptop, AI Nova akan menyimak curhatanmu.
+   - 🗣️ **Suara Balasan AI (Text-to-Speech)**: AI membalas dengan suara Bahasa Indonesia yang hangat, peka, dan tidak tumpang-tindih.
+   - 🌊 **Audio Soundwave Visualizer**: Canvas gelombang suara yang bergerak dinamis mengikuti ritme obrolan telepon.
+   - 💬 **Pilihan Topik Cepat & Chat Box**: Curhat seputar kerjaan capek, galau asmara, kesepian, pusing kuliah, hingga minta digombalin!
 
 ### 🔥 Zona Game Bikin Kesel & Darah Tinggi (9 Game):
 2. **[Tombol yang Mustahil Diklik](button-game.html)**: Tombol hadiah Rp 1 Miliar yang selalu melesat menghindar, balon sindiran pedas, dan Rage Meter dengan goncangan layar.

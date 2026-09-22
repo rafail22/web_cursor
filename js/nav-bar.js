@@ -6,7 +6,7 @@
     
     // Determine active page
     let activePage = 'hub';
-    if (currentPath.includes('ai-vision.html')) activePage = 'aivision';
+    if (currentPath.includes('ai-call.html') || currentPath.includes('ai-vision.html')) activePage = 'aicall';
     else if (currentPath.includes('terminal.html')) activePage = 'terminal';
     else if (currentPath.includes('button-game.html')) activePage = 'button';
     else if (currentPath.includes('payday-survival.html')) activePage = 'payday';
@@ -25,7 +25,7 @@
     
     const pages = [
       { id: 'hub', label: 'Menu Utama', icon: '🏠', url: 'index.html', theme: '' },
-      { id: 'aivision', label: 'AI Vision Gombal', icon: '👁️', url: 'ai-vision.html', theme: 'button-theme' },
+      { id: 'aicall', label: 'AI Telepon Curhat', icon: '📞', url: 'ai-call.html', theme: 'button-theme' },
       { id: 'button', label: 'Tombol Jahil', icon: '🎯', url: 'button-game.html', theme: 'button-theme' },
       { id: 'payday', label: 'Bertahan Gajian', icon: '💸', url: 'payday-survival.html', theme: 'payday-theme' },
       { id: 'password', label: 'Password Mustahil', icon: '📝', url: 'password-game.html', theme: 'button-theme' },

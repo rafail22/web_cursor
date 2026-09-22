@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Nova // Teleponan Curhat &amp; Gombal</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/ai-call.css">
+</head>
+<body class="ai-call-page">
+
+  <!-- Header Section -->
+  <header class="call-header">
+    <div class="call-badge">
+      <span class="call-pulse-dot"></span>
+      <span>SIMULASI PANGGILAN SUARA REAL-TIME</span>
+    </div>
+    <h1 class="call-title">TEMAN CURHAT TELEPONAN</h1>
+    <p class="call-subtitle">
+      Sedang lelah, galau, atau butuh teman bicara? Telepon AI Nova sekarang! Bicaralah langsung lewat mikrofon atau pilih topik curhatanmu.
+    </p>
+  </header>
+
+  <!-- Main Smartphone Mockup Screen -->
+  <main class="phone-container" id="phoneContainer">
+    <!-- Top Notch -->
+    <div class="phone-speaker-notch"></div>
+
+    <!-- Caller Profile -->
+    <div class="caller-profile">
+      <div class="avatar-wrapper">
+        <div class="avatar-halo"></div>
+        <div class="avatar-circle" id="avatarCircle">
+          🤖
+        </div>
+      </div>
+      <h2 class="caller-name" id="callerName">AI NOVA</h2>
+      <div class="call-status" id="callStatus">
+        Siap Ditelepon • Online
+      </div>
+    </div>
+
+    <!-- Audio Soundwave Visualizer -->
+    <div class="soundwave-box">
+      <canvas id="soundwaveCanvas"></canvas>
+    </div>
+
+    <!-- Live Subtitle / Captions -->
+    <div class="caption-card">
+      <div class="caption-label" id="captionLabel">
+        STATUS TELEPON
+      </div>
+      <div class="caption-text" id="captionText">
+        Tekan tombol hijau 📞 di bawah untuk memulai panggilan suara, atau pilih topik curhatan yang ingin kamu bagi hari ini! ✨
+      </div>
+    </div>
+
+    <!-- Quick Topic Chips -->
+    <div class="topic-pills-container">
+      <div class="topic-header">
+        <span>Topik Curhat Instan:</span>
+        <span style="font-size: 10px; color: #64748b;">(Klik untuk ngobrol)</span>
+      </div>
+      <div class="topic-chips">
+        <button class="chip-btn" data-topic="capek">😫 Lagi Capek Banget</button>
+        <button class="chip-btn" data-topic="galau">💔 Galau Putus Cinta</button>
+        <button class="chip-btn" data-topic="gombal">💖 Gombalin Dong!</button>
+        <button class="chip-btn" data-topic="kesepian">🌙 Nemenin Ngobrol</button>
+        <button class="chip-btn" data-topic="kuliah">🎓 Pusing Kuliah / Tugas</button>
+        <button class="chip-btn" data-topic="senang">🎉 Lagi Bahagia!</button>
+      </div>
+    </div>
+
+    <!-- Text Chat Input Row -->
+    <div class="call-input-row">
+      <input type="text" class="call-input" id="chatInput" placeholder="Ketik curhatanmu di sini jika di tempat ramai..." autocomplete="off">
+      <button class="call-send-btn" id="btnSendChat" title="Kirim Pesan">Kirim</button>
+    </div>
+
+    <!-- In-Call Keypad Control Buttons -->
+    <div class="phone-controls-row">
+      <!-- Mute Toggle -->
+      <button class="ctrl-btn" id="btnMute" title="Mute Mikrofon">
+        🎙️
+        <span class="ctrl-label">Mute</span>
+      </button>
+
+      <!-- Mic Voice Recognition -->
+      <button class="ctrl-btn" id="btnMic" title="Tekan untuk Bicara (Speech-to-Text)">
+        🗣️
+        <span class="ctrl-label">Bicara</span>
+      </button>
+
+      <!-- Speaker Toggle -->
+      <button class="ctrl-btn" id="btnSpeaker" title="Speaker Suara AI">
+        🔊
+        <span class="ctrl-label">Speaker</span>
+      </button>
+
+      <!-- Main Action: Start Call (Green) -->
+      <button class="call-btn-main btn-start-call" id="btnStartCall" title="Mulai Telepon">
+        📞
+      </button>
+
+      <!-- Main Action: End Call (Red - initially hidden) -->
+      <button class="call-btn-main btn-end-call" id="btnEndCall" style="display: none;" title="Tutup Telepon">
+        🔴
+      </button>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/audio-fx.js"></script>
+  <script src="js/nav-bar.js"></script>
+  <script src="js/ai-call.js"></script>
+</body>
+</html>
