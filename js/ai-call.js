@@ -18,8 +18,12 @@ class AICallCompanion {
     this.btnMic = document.getElementById('btnMic');
     this.btnSpeaker = document.getElementById('btnSpeaker');
     this.btnMute = document.getElementById('btnMute');
+    this.btnVoiceGender = document.getElementById('btnVoiceGender');
     this.chatInput = document.getElementById('chatInput');
     this.btnSendChat = document.getElementById('btnSendChat');
+
+    // Voice Gender: 'male' (default suara cowok) | 'female'
+    this.voiceGender = 'male';
 
     // Call state: 'IDLE' | 'DIALING' | 'CONNECTED' | 'ENDED'
     this.callState = 'IDLE';
@@ -94,6 +98,7 @@ class AICallCompanion {
     if (this.btnMic) this.btnMic.addEventListener('click', () => this.toggleSpeechRecognition());
     if (this.btnMute) this.btnMute.addEventListener('click', () => this.toggleMute());
     if (this.btnSpeaker) this.btnSpeaker.addEventListener('click', () => this.toggleSpeaker());
+    if (this.btnVoiceGender) this.btnVoiceGender.addEventListener('click', () => this.toggleVoiceGender());
 
     // Text Chat input
     if (this.btnSendChat) this.btnSendChat.addEventListener('click', () => this.handleTextSubmit());
@@ -224,10 +229,11 @@ class AICallCompanion {
     this.getAudioContext();
 
     // UI Updates
+    const targetName = this.voiceGender === 'male' ? "AI Rangga" : "AI Nova";
     this.callStatus.textContent = "Memanggil...";
     this.callStatus.className = "call-status calling";
     this.captionLabel.textContent = "STATUS SAMBUNGAN";
-    this.captionText.textContent = "Menyambungkan ke AI Nova... Mengirim sinyal panggilan.";
+    this.captionText.textContent = `Menyambungkan ke ${targetName}... Mengirim sinyal panggilan.`;
 
     // Switch action buttons
     if (this.btnStartCall) this.btnStartCall.style.display = 'none';
@@ -251,12 +257,19 @@ class AICallCompanion {
     this.callDuration = 0;
     this.startCallTimer();
 
+    const isMale = this.voiceGender === 'male';
+    const aiLabel = isMale ? "AI RANGGA" : "AI NOVA";
+
     this.callStatus.textContent = "00:00 • Suara HD";
     this.callStatus.className = "call-status";
-    this.captionLabel.textContent = "AI NOVA (TERHUBUNG)";
+    this.captionLabel.textContent = `${aiLabel} (TERHUBUNG)`;
 
     // Initial greeting
-    const greetings = [
+    const greetings = isMale ? [
+      "Halo manis! Seneng banget kamu nelpon aku. Hari ini ada cerita apa? Yuk curhat, bahuku selalu siap buat kamu sandarin 🤗",
+      "Hai kamu... Baru aja aku kepikiran kamu, eh hp-ku bunyi dan ternyata kamu yang nelpon. Pas banget kan? Cerita dong ada apa ✨",
+      "Halo cantik! Lagi capek ya? Sini cerita semuanya ke aku, aku dengerin sampai hatimu tenang dan adem 💕"
+    ] : [
       "Halo! Seneng banget kamu nelpon aku. Hari ini ada cerita apa? Yuk curhat, aku siap dengerin semuanya kok! 🤗",
       "Hai manis! Akhirnya kamu nelpon juga. Lagi capek atau lagi kangen pengen denger gombalanku nih? Cerita dong! ✨",
       "Halo kawan! Sinyal cinta dan perhatianku langsung 100% pas kamu nelpon. Gimana keadaan hatimu hari ini? 💕"
@@ -281,10 +294,13 @@ class AICallCompanion {
     this.callState = 'ENDED';
     this.playHangupBeep();
 
+    const isMale = this.voiceGender === 'male';
+    const aiName = isMale ? "AI Rangga" : "AI Nova";
+
     this.callStatus.textContent = `Panggilan Berakhir (${this.formatDuration(this.callDuration)})`;
     this.callStatus.className = "call-status ended";
     this.captionLabel.textContent = "PANGGILAN DITUTUP";
-    this.captionText.textContent = `Telepon selesai. Terima kasih sudah curhat! Ingat, kapan pun kamu butuh teman bicara, AI Nova selalu siap ditelepon lagi ya 💖`;
+    this.captionText.textContent = `Telepon selesai. Terima kasih sudah curhat! Ingat, kapan pun kamu butuh teman bicara, ${aiName} selalu siap ditelepon lagi ya 💖`;
 
     if (this.btnEndCall) this.btnEndCall.style.display = 'none';
     if (this.btnStartCall) this.btnStartCall.style.display = 'flex';
@@ -293,7 +309,7 @@ class AICallCompanion {
     setTimeout(() => {
       if (this.callState === 'ENDED') {
         this.callState = 'IDLE';
-        this.callStatus.textContent = "Siap Ditelepon • Online";
+        this.callStatus.textContent = `Siap Ditelepon • Online (${isMale ? 'Suara Cowok' : 'Suara Cewek'})`;
         this.callStatus.className = "call-status";
       }
     }, 4000);
@@ -343,6 +359,35 @@ class AICallCompanion {
       window.speechSynthesis.cancel();
       this.isSpeaking = false;
       this.avatarCircle.classList.remove('is-talking');
+    }
+  }
+
+  toggleVoiceGender() {
+    this.voiceGender = this.voiceGender === 'male' ? 'female' : 'male';
+    const isMale = this.voiceGender === 'male';
+
+    if (this.btnVoiceGender) {
+      this.btnVoiceGender.innerHTML = `${isMale ? '👨' : '👩'}<span class="ctrl-label">${isMale ? 'Cowok' : 'Cewek'}</span>`;
+      this.btnVoiceGender.classList.toggle('active', isMale);
+    }
+
+    if (this.callerName) {
+      this.callerName.textContent = isMale ? "AI RANGGA" : "AI NOVA";
+    }
+
+    if (this.avatarCircle) {
+      this.avatarCircle.textContent = isMale ? "🧑‍💼" : "👩‍💼";
+    }
+
+    if (this.callState === 'IDLE' && this.callStatus) {
+      this.callStatus.textContent = `Siap Ditelepon • Online (${isMale ? 'Suara Cowok' : 'Suara Cewek'})`;
+    }
+
+    if (this.callState === 'CONNECTED') {
+      const ack = isMale 
+        ? "Suara diubah ke mode Cowok! Aku Rangga, siap nemenin kamu ngobrol dan dengerin curhatanmu."
+        : "Suara diubah ke mode Cewek! Halo, aku Nova, siap mendengarkan semua ceritamu manis.";
+      this.aiSpeak(ack);
     }
   }
 
@@ -522,7 +567,9 @@ class AICallCompanion {
   aiSpeak(text) {
     if (this.callState !== 'CONNECTED') return;
 
-    this.captionLabel.textContent = "AI NOVA (BERBICARA)";
+    const isMale = this.voiceGender === 'male';
+    const aiLabel = isMale ? "AI RANGGA" : "AI NOVA";
+    this.captionLabel.textContent = `${aiLabel} (BERBICARA)`;
     this.typewriterCaption(text);
 
     if (!this.isSpeakerOn || !('speechSynthesis' in window)) return;
@@ -537,13 +584,39 @@ class AICallCompanion {
 
     const utterance = new SpeechSynthesisUtterance(cleanText);
     utterance.lang = 'id-ID';
-    utterance.rate = 1.02;
-    utterance.pitch = 1.08;
 
-    // Find Indonesian Voice
+    // Find Indonesian Voice matching gender
     const voices = window.speechSynthesis.getVoices();
-    const idVoice = voices.find(v => v.lang && (v.lang.includes('id') || v.lang.includes('ID') || v.lang.startsWith('id')));
-    if (idVoice) utterance.voice = idVoice;
+    const idVoices = voices.filter(v => v.lang && (v.lang.includes('id') || v.lang.includes('ID') || v.lang.startsWith('id')));
+
+    if (isMale) {
+      // Find Indonesian male voice (Ardi, Andika, Male, Pria, etc.)
+      const maleVoice = idVoices.find(v => {
+        const n = v.name.toLowerCase();
+        return n.includes('ardi') || n.includes('andika') || n.includes('male') || n.includes('pria') || n.includes('bimo') || n.includes('david');
+      });
+      if (maleVoice) {
+        utterance.voice = maleVoice;
+      } else if (idVoices.length > 0) {
+        utterance.voice = idVoices[0];
+      }
+      // Low pitch produces deep, warm, masculine guy voice
+      utterance.pitch = 0.76;
+      utterance.rate = 0.95;
+    } else {
+      // Female voice
+      const femaleVoice = idVoices.find(v => {
+        const n = v.name.toLowerCase();
+        return n.includes('gadis') || n.includes('female') || n.includes('wanita') || n.includes('siti') || n.includes('zira');
+      });
+      if (femaleVoice) {
+        utterance.voice = femaleVoice;
+      } else if (idVoices.length > 0) {
+        utterance.voice = idVoices[0];
+      }
+      utterance.pitch = 1.08;
+      utterance.rate = 1.02;
+    }
 
     this.isSpeaking = true;
     this.currentUtterance = utterance;
@@ -555,7 +628,7 @@ class AICallCompanion {
       this.speechFinishedTime = Date.now();
       this.avatarCircle.classList.remove('is-talking');
       if (this.callState === 'CONNECTED') {
-        this.captionLabel.textContent = "AI NOVA (MENYIMAK)";
+        this.captionLabel.textContent = `${aiLabel} (MENYIMAK)`;
       }
     };
 
