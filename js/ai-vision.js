@@ -19,6 +19,7 @@ class AIVisionCompanion {
     this.smilePercent = document.getElementById('smilePercent');
     this.comfortFill = document.getElementById('comfortFill');
     this.comfortPercent = document.getElementById('comfortPercent');
+    this.statusTextEl = document.getElementById('aiStatusText');
 
     this.isStreaming = false;
     this.isVoiceEnabled = true;
@@ -42,6 +43,12 @@ class AIVisionCompanion {
     this.smileLevel = 0;
     this.comfortLevel = 70;
     this.lastSpokenText = '';
+
+    // Audio & speech synthesis queue lock
+    this.isSpeaking = false;
+    this.speechFinishedTime = 0;
+    this.currentUtterance = null;
+    this.speechSafetyTimer = null;
 
     // Indonesian quotes collection
     this.quotes = {
@@ -236,8 +243,12 @@ class AIVisionCompanion {
     this.isVoiceEnabled = !this.isVoiceEnabled;
     this.voiceToggleBtn.textContent = this.isVoiceEnabled ? '🔊 Suara AI: ON' : '🔇 Suara AI: OFF';
     this.voiceToggleBtn.classList.toggle('active-tool', this.isVoiceEnabled);
-    if (!this.isVoiceEnabled && 'speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
+    if (!this.isVoiceEnabled) {
+      this.isSpeaking = false;
+      if (this.speechSafetyTimer) clearTimeout(this.speechSafetyTimer);
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
     }
   }
 
@@ -349,10 +360,10 @@ class AIVisionCompanion {
       const isSwitchingEmotion = (candidate !== this.lastDetectedExpression);
 
       if (isSwitchingEmotion) {
-        // Instant trigger on emotion change
+        // Trigger on emotion change
         this.triggerExpression(candidate);
-      } else if (candidate === 'happy' && now - this.expressionCooldown > 5500) {
-        // Periodic repeat gombalan if user keeps smiling
+      } else if (candidate === 'happy' && now - this.expressionCooldown > 6500 && !this.isSpeaking) {
+        // Periodic repeat gombalan only if user keeps smiling AND AI is not currently speaking
         this.triggerExpression('happy');
       }
     }
@@ -555,14 +566,42 @@ class AIVisionCompanion {
 
   triggerExpression(type, forced = false) {
     const now = Date.now();
-    if (!forced && now - this.expressionCooldown < 2000 && this.lastDetectedExpression === type) {
+
+    // 1. If AI is currently speaking, DO NOT interrupt or cut off the voice/text unless forced!
+    if (this.isSpeaking && !forced) {
+      this.updateBadgeOnly(type);
+      return;
+    }
+
+    // 2. Polite breathing room: Wait at least 2.5s after speech finishes before starting a new sentence
+    if (!forced && (now - this.speechFinishedTime < 2500)) {
+      this.updateBadgeOnly(type);
+      return;
+    }
+
+    // 3. Prevent repeating the same emotion too quickly
+    if (!forced && now - this.expressionCooldown < 3000 && this.lastDetectedExpression === type) {
       return;
     }
 
     this.expressionCooldown = now;
     this.lastDetectedExpression = type;
+    this.updateBadgeOnly(type);
 
-    // Badge styling & labels
+    // Pick random quote
+    const list = this.quotes[type] || this.quotes.neutral;
+    const quote = list[Math.floor(Math.random() * list.length)];
+
+    // Typewriter effect
+    this.typewriterQuote(quote);
+
+    // Speak AI voice
+    if (this.isVoiceEnabled) {
+      this.speakText(quote, forced);
+    }
+  }
+
+  updateBadgeOnly(type) {
     const badgeConfig = {
       happy: { label: "😊 SENYUM / BAHAGIA", color: "var(--ai-magenta)", comfort: 95 },
       sad: { label: "🥺 SEDIH / CEMBERUT", color: "var(--ai-cyan)", comfort: 35 },
@@ -578,23 +617,9 @@ class AIVisionCompanion {
       this.badgeEl.style.backgroundColor = cfg.color;
     }
 
-    // Update comfort level
     this.comfortLevel = cfg.comfort;
     if (this.comfortFill) this.comfortFill.style.width = `${this.comfortLevel}%`;
     if (this.comfortPercent) this.comfortPercent.textContent = `${this.comfortLevel}%`;
-
-    // Pick random quote
-    const list = this.quotes[type] || this.quotes.neutral;
-    const quote = list[Math.floor(Math.random() * list.length)];
-
-    // Typewriter effect
-    this.typewriterQuote(quote);
-
-    // Speak AI voice
-    if (this.isVoiceEnabled && quote !== this.lastSpokenText) {
-      this.lastSpokenText = quote;
-      this.speakText(quote);
-    }
   }
 
   typewriterQuote(text) {
@@ -613,23 +638,47 @@ class AIVisionCompanion {
     }, 20);
   }
 
-  speakText(text) {
+  speakText(text, forced = false) {
     if (!('speechSynthesis' in window)) return;
 
-    window.speechSynthesis.cancel();
+    if (forced) {
+      window.speechSynthesis.cancel();
+      this.isSpeaking = false;
+    }
 
-    // Clean emojis from text before speaking
-    const cleanText = text.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '');
+    if (this.isSpeaking) return;
+
+    // Clean emojis and decorative characters before speaking
+    const cleanText = text.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '').replace(/[✨💖🥰🥺🍫😤🌟🧋🤗😲😂🤖🙈🫣🧘💕😊😉👠🔥🏆💎💪]/gu, '').trim();
+
+    if (!cleanText) return;
 
     const utterance = new SpeechSynthesisUtterance(cleanText);
     utterance.lang = 'id-ID';
-    utterance.rate = 1.05;
-    utterance.pitch = 1.1;
+    utterance.rate = 1.0;
+    utterance.pitch = 1.05;
 
-    // Look for Indonesian voice
+    // Select Indonesian voice if available
     const voices = window.speechSynthesis.getVoices();
-    const idVoice = voices.find(v => v.lang.includes('id') || v.lang.includes('ID'));
+    const idVoice = voices.find(v => v.lang && (v.lang.includes('id') || v.lang.includes('ID') || v.lang.startsWith('id')));
     if (idVoice) utterance.voice = idVoice;
+
+    this.isSpeaking = true;
+    this.currentUtterance = utterance; // Prevent Chrome GC bug
+    if (this.statusTextEl) this.statusTextEl.textContent = "🎙️ AI Sedang Berbicara...";
+
+    const finishSpeaking = () => {
+      if (this.speechSafetyTimer) clearTimeout(this.speechSafetyTimer);
+      this.isSpeaking = false;
+      this.speechFinishedTime = Date.now();
+      if (this.statusTextEl) this.statusTextEl.textContent = "Menganalisis Bahasa Tubuh...";
+    };
+
+    if (this.speechSafetyTimer) clearTimeout(this.speechSafetyTimer);
+    this.speechSafetyTimer = setTimeout(finishSpeaking, 12000);
+
+    utterance.onend = finishSpeaking;
+    utterance.onerror = finishSpeaking;
 
     window.speechSynthesis.speak(utterance);
   }
